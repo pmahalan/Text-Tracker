@@ -6,18 +6,17 @@ var Sequelize = require('sequelize');
 var sequelize = require("../config/connection.js");
 
 // Creates a "User" model that matches up with DB
-var User = sequelize.define("people", {
+var Events = sequelize.define("events", {
 
-    date_texted: Sequelize.DATE,
-    name: Sequelize.STRING,
-    cell: Sequelize.BIGINT,
-    email: Sequelize.STRING,
-    role: Sequelize.STRING,
+    date_event: Sequelize.DATE,
+    title: Sequelize.STRING,
+    location: Sequelize.STRING,
+    host: Sequelize.STRING,
     keyword: Sequelize.STRING
   });
 
   // Syncs with DB
-  User.sync();
+  Events.sync();
 
 // Makes the User Model available for other files (will also create a table)
-  module.exports = User;
+  module.exports = Events;
