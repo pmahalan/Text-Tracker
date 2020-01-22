@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS people_db;
+
 CREATE DATABASE people_db;
 USE people_db;
 CREATE TABLE people (
@@ -9,8 +11,6 @@ CREATE TABLE people (
     keyword VARCHAR(80) NOT NULL,
     
 );
-
-
 
 
 CREATE TABLE events (
