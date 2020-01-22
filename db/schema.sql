@@ -5,6 +5,8 @@ CREATE TABLE people (
     name VARCHAR(60),
     cell BIGINT PRIMARY KEY,
     email VARCHAR(60),
+    role VARCHAR(60),
+    keyword VARCHAR(80) NOT NULL,
     
 );
 
@@ -17,4 +19,5 @@ CREATE TABLE events (
     title VARCHAR (100),
     location VARCHAR (60),
     host VARCHAR(60),
+    keyword VARCHAR(80) NOT NULL
 );
