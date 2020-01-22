@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<title>Text Tracker</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="stylesheets/style.css" rel="stylesheet">
-  </head>
-	<body>
-		{{{ body }}}
-	</body>
+  <title>Text Tracker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/83f190f6d5.js" crossorigin="anonymous"></script>
+  <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+<body>
+
+{{!-- Body --}}
+  {{{body}}}
+
+  <!-- Bottom Navbar-->
+
+	<div class="navbar-bottom">
+		<div class="row center">
+			<div class="col s4">
+				<a href="index.html"><i class="fa fa-home"></i></a>
+			</div>
+			<div class="col s4">
+				<a href="people" id="nav-menu"><i class="fas fa-user"></i></a>
+			</div>
+			<div class="col s4">
+				<a href="events"><i class="far fa-calendar-alt"></i></a>
+			</div>
+		</div>
+  </div>
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
 </html>

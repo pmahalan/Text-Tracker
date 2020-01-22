@@ -1,0 +1,48 @@
+{{!-- Person Info --}}
+
+<div class="container">
+{{!-- adds a full width card with person's info --}}
+  {{#each person}}
+  <div class="col s12 m7">
+    <h2 class="header">{{name}}</h2>
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <ul>
+          <p>{{cell}}</p>
+          <p>{{email}}</p>
+          </ul>
+        </div>
+        <div class="card-action">
+          <a href="#">Update this person</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+
+{{!-- Table of Events that Person has Attended (repeats as neccessary) --}}
+  <div class="row">
+    <table class="responsive-table striped column">
+      <thead>
+        <tr>
+          <th>Date of Event</th>
+          <th>Title of Event</th>
+          <th>Event location</th>
+          <th>Event host</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each event}}
+        <tr>
+          <td>{{date_event}}</td>
+          <td>{{title}}</td>
+          <td>{{location}}</td>
+          <td>{{host}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+  </div>
+
+{{!-- ends container --}}
+</div> 
