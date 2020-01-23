@@ -2,8 +2,10 @@
 <div class="divider"></div>
   <div class="section">
     {{!-- dynamically insert the date/event that was searched for --}}
-    <h5>Date</h5>
-    <p>Stuff</p>
+    {{#each event}}
+    <h5>{{createdAt}}</h5>
+    <p>{{title}}</p>
+    {{/each}}
   </div>
   {{!-- Insert button to save as csv --}}
 
@@ -19,7 +21,7 @@
       <tbody>
         {{#each person}}
         <tr>
-          <td>{{name}}</td>
+          <td>{{first_name}} {{last_name}}</td>
           <td>{{email}}</td>
           <td>{{cell}}</td>
         </tr>
