@@ -20,15 +20,15 @@ $(document).ready(function () {
     let searchParam = JSON.stringify(newSearch);
     console.log(searchParam);
 
-    // makes Ajax post request
-    function postPerson(createdPerson) {
-      $.post("https://6a7343ec-2977-44f3-8ba1-b1dcec3207fa.mock.pstmn.io", createdPerson)
-        .then(function (data) {
-          console.log(data);
-          window.location.replace("/newPerson");
-          // If there's an error, handle it by throwing up a bootstrap alert
-        })
-    }
+    // // makes Ajax post request
+    // function postPerson(createdPerson) {
+    //   $.post("https://6a7343ec-2977-44f3-8ba1-b1dcec3207fa.mock.pstmn.io", createdPerson)
+    //     .then(function (data) {
+    //       console.log(data);
+    //       window.location.replace("/newPerson");
+    //       // If there's an error, handle it by throwing up a bootstrap alert
+    //     })
+    // }
     // sends ajax post request
     // postPerson(createdPerson)
   });
