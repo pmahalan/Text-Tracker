@@ -5,20 +5,19 @@ USE people_db;
 CREATE TABLE people (
     
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    date_texted DATETIME NOT NULL,
+ 	createdAt TIMESTAMP not null,
     first_name VARCHAR(60),
     last_name VARCHAR(60),
     cell BIGINT,
     email VARCHAR(60),
     role VARCHAR(60),
-    keyword VARCHAR(80),
-    
-);
+    keyword VARCHAR(80)
+    );
 
 
 CREATE TABLE events (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    date_event DATETIME NOT NULL,
+ 	createdAt TIMESTAMP not null,
     title VARCHAR (100),
     location VARCHAR (60),
     host VARCHAR(60),
