@@ -18,46 +18,46 @@
   <!-- Header -->
 
     <div class="section row">
-      <h5>Add a New Event</h5>
+      <h5>Add a New Person</h5>
       <div class="divider row"></div>
     </div>
 
-    <!-- New Event Field -->
+    <!-- New Person Field -->
     <div class="row">
-      <form class="col s12" id="eventForm">
+      <form class="col s12" id="personForm">
         <div class="row">
-          <!-- Event Name -->
+          <!-- Person Name -->
           <div class="input-field col s6">
-            <input id="title" type="text" class="validate">
-            <label for="title">Event Name</label>
+            <input id="name" type="text" class="validate">
+            <label for="name">Full Name</label>
           </div>
-          <!-- Date Picker date_event -->
+          <!-- Email -->
           <div class="input-field col s6">
-            <input id="date" type="text" class="datepicker">
-            <label for="date_event">Event Date</label>
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
           </div>
         </div>
-        <!-- Location of Event -->
+        <!-- Cell Number -->
         <div class="row">
           <div class="input-field col s6">
-            <input id="location" type="text" class="validate">
-            <label for="location">Location</label>
+            <input id="cell" type="tel" class="validate">
+            <label for="cell">Cell Number</label>
           </div>
-        <!-- Keyword -->
+        <!-- role -->
           <div class="input-field col s6">
-            <input placeholder="meeting, service, etc." id="keyword" type="text" class="validate">
-            <label for="keyword">Keyword</label>
+            <input placeholder="guest, volunteer, staff, etc." id="role" type="text" class="validate">
+            <label for="role">Role</label>
           </div>
         </div>
-        <!-- Event Host -->
+        <!-- Event Type -->
         <div class="row">
           <div class="input-field col s12">
-            <input id="host" type="text" class="validate">
-            <label for="host">Host</label>
+            <input id="keyword" type="text" class="validate">
+            <label for="keyword">Type of Event Attended</label>
           </div>
         </div>
-        <!-- Submit button for new event -->
-        <button id="newEvent" class="btn waves-effect waves-light row right" type="submit" name="action">Submit
+        <!-- Submit button for new Person -->
+        <button id="newPerson" class="btn waves-effect waves-light row right" type="submit" name="action">Submit
           <i class="material-icons right">send</i>
         </button>
       </form>
@@ -84,7 +84,7 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-  <script type="text/javascript" src="stylesheets/event.js"></script>
+  <script type="text/javascript" src="stylesheets/person.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
