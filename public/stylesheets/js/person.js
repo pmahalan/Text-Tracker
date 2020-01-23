@@ -6,7 +6,8 @@ $(document).ready(function () {
     
     // Collects data from form
     // Getting references to our form and input
-    let personName = $("#name").val().trim();
+    let personFirst = $("#firstName").val().trim();
+    let personLast = $("#lastName").val().trim();
     let personCell = $("#cell").val().trim();
     let personRole = $("#role").val().trim();
     let personEmail = $("#email").val().trim();
@@ -15,7 +16,8 @@ $(document).ready(function () {
     // parseInt for cell number
     
     let personData = {
-      name: personName,
+      first_name: personFirst,
+      last_name: personLast,
       cell: personCell,
       email: personEmail,
       role: personRole,
@@ -24,10 +26,10 @@ $(document).ready(function () {
 
     // Stringify personData
     let createdPerson = JSON.stringify(personData);
-
+    console.log(createdPerson);
     // makes Ajax post request
-    function postPerson(createdPerson) {
-      $.post("https://6a7343ec-2977-44f3-8ba1-b1dcec3207fa.mock.pstmn.io", createdPerson)
+    function postPerson(newPerson) {
+      $.post("/api/users", newPerson)
         .then(function (data) {
           console.log(data);
           window.location.replace("/newPerson");
@@ -35,6 +37,6 @@ $(document).ready(function () {
         })
     }
     // sends ajax post request
-    // postPerson(createdPerson)
+    postPerson(createdPerson)
   });
 });
