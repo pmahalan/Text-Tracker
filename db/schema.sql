@@ -3,12 +3,15 @@ DROP DATABASE IF EXISTS people_db;
 CREATE DATABASE people_db;
 USE people_db;
 CREATE TABLE people (
+    
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date_texted DATETIME NOT NULL,
-    name VARCHAR(60),
-    cell BIGINT PRIMARY KEY,
+    first_name VARCHAR(60),
+    last_name VARCHAR(60),
+    cell BIGINT,
     email VARCHAR(60),
     role VARCHAR(60),
-    keyword VARCHAR(80) NOT NULL,
+    keyword VARCHAR(80),
     
 );
 
