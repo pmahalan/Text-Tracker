@@ -4,17 +4,16 @@
 {{!-- adds a full width card with person's info --}}
   {{#each person}}
   <div class="col s12 m7">
-    <h2 class="header">{{name}}</h2>
+    <h2 class="header">{{first_name}} {{last_name}}</h2>
     <div class="card horizontal">
       <div class="card-stacked">
         <div class="card-content">
           <ul>
-          <p>{{cell}}</p>
-          <p>{{email}}</p>
+          <p>Cell number:{{cell}}</p>
+          <p>Email: {{email}}</p>
+          <p>Role: {{role}}</p>
+          <p>Event type attended:{{keyword}}</p>
           </ul>
-        </div>
-        <div class="card-action">
-          <a href="#">Update this person</a>
         </div>
       </div>
     </div>
@@ -35,7 +34,7 @@
       <tbody>
         {{#each event}}
         <tr>
-          <td>{{date_event}}</td>
+          <td>{{createdAt}}</td>
           <td>{{title}}</td>
           <td>{{location}}</td>
           <td>{{host}}</td>
