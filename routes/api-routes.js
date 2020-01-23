@@ -67,14 +67,26 @@ module.exports = function(app) {
 
 
   app.put("/api/users", function(req, res) {
-    db.Post.update(req.body,
+    db.results.update(req.body,
       {
         where: {
           cell: req.body.cell
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(data) {
+        res.json(data);
+      });
+  });
+
+  app.put("/api/events", function(req, res) {
+    db.Events.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function(data) {
+        res.json(data);
       });
   });
 };
