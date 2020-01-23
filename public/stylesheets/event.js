@@ -36,6 +36,6 @@ $(document).ready(function () {
         })
     }
     // sends ajax post request
-    // postEvent(eventData)
+    // postEvent(createdEvent)
   });
 });

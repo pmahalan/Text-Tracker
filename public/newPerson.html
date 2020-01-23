@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Text Tracker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/83f190f6d5.js" crossorigin="anonymous"></script>
+  <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="row"></div>
+  <div class="container">
+  <!-- Header -->
+
+    <div class="section row">
+      <h5>Add a New Person</h5>
+      <div class="divider row"></div>
+    </div>
+
+    <!-- New Person Field -->
+    <div class="row">
+      <form class="col s12" id="personForm">
+        <div class="row">
+          <!-- Person Name -->
+          <div class="input-field col s6">
+            <input id="name" type="text" class="validate">
+            <label for="name">Full Name</label>
+          </div>
+          <!-- Email -->
+          <div class="input-field col s6">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <!-- Cell Number -->
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="cell" type="tel" class="validate">
+            <label for="cell">Cell Number</label>
+          </div>
+        <!-- role -->
+          <div class="input-field col s6">
+            <input placeholder="guest, volunteer, staff, etc." id="role" type="text" class="validate">
+            <label for="role">Role</label>
+          </div>
+        </div>
+        <!-- Event Type -->
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="keyword" type="text" class="validate">
+            <label for="keyword">Type of Event Attended</label>
+          </div>
+        </div>
+        <!-- Submit button for new Person -->
+        <button id="newPerson" class="btn waves-effect waves-light row right" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bottom Navbar-->
+
+  <div class="navbar-bottom">
+    <div class="row center">
+      <div class="col s4">
+        <a href="index.html"><i class="fa fa-home"></i></a>
+      </div>
+      <div class="col s4">
+        <a href="people" id="nav-menu"><i class="fas fa-user"></i></a>
+      </div>
+      <div class="col s4">
+        <a href="events"><i class="far fa-calendar-alt"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="stylesheets/person.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
