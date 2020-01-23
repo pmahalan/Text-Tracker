@@ -42,4 +42,27 @@ module.exports = function(app) {
       res.status(401).json(err);
     });
   });
+
+  app.delete("/api/users/:id", function(req, res) {
+    db.results.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function() {
+        res.json(data);
+      });
+  });
+
+  app.put("/api/users", function(req, res) {
+    db.Post.update(req.body,
+      {
+        where: {
+          cell: req.body.cell
+        }
+      })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      });
+  });
 };
