@@ -13,9 +13,11 @@
 
 <body>
 
-  <!-- Header -->
+  <div class="row"></div>
   <div class="container">
-    <div class="section">
+  <!-- Header -->
+
+    <div class="section row">
       <h5>Add a New Event</h5>
       <div class="divider row"></div>
     </div>
@@ -31,15 +33,20 @@
           </div>
           <!-- Date Picker date_event -->
           <div class="input-field col s6">
-            <input type="text" class="datepicker">
+            <input id="date" type="text" class="datepicker">
             <label for="date_event">Event Date</label>
           </div>
         </div>
         <!-- Location of Event -->
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s6">
             <input id="location" type="text" class="validate">
             <label for="location">Location</label>
+          </div>
+        <!-- Keyword -->
+          <div class="input-field col s6">
+            <input placeholder="meeting, service, etc." id="keyword" type="text" class="validate">
+            <label for="keyword">Keyword</label>
           </div>
         </div>
         <!-- Event Host -->
@@ -49,7 +56,8 @@
             <label for="host">Host</label>
           </div>
         </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <!-- Submit button for new event -->
+        <button id="newEvent" class="btn waves-effect waves-light row right" type="submit" name="action">Submit
           <i class="material-icons right">send</i>
         </button>
       </form>
