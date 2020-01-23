@@ -20,7 +20,7 @@ module.exports = function(app) {
     }
     res.sendFile(path.join(__dirname, "../public/users.html"));
     // ^ we will need to create a new handlebars page for this
-    
+
   });
 
   app.get("/events", function(req, res) {

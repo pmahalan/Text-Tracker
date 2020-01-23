@@ -5,11 +5,12 @@ var Sequelize = require('sequelize');
 // sequelize (lowercase) references our connection to the DB.
 var sequelize = require("../config/connection.js");
 
-// Creates a "User" model that matches up with DB
-var User = sequelize.define("people", {
+// Creates a "results" model that matches up with DB
+var results = sequelize.define("people", {
 
     date_texted: Sequelize.DATE,
-    name: Sequelize.STRING,
+    first_name: Sequelize.STRING,
+    last_name: Sequelize.STRING,
     cell: Sequelize.BIGINT,
     email: Sequelize.STRING,
     role: Sequelize.STRING,
@@ -17,7 +18,7 @@ var User = sequelize.define("people", {
   });
 
   // Syncs with DB
-  User.sync();
+  results.sync();
 
-// Makes the User Model available for other files (will also create a table)
-  module.exports = User;
+// Makes the results Model available for other files (will also create a table)
+  module.exports = results;
