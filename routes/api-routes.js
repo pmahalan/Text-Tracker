@@ -66,3 +66,19 @@ module.exports = function(app) {
       });
   });
 };
+
+app.get("/api/users", function(req, res) {
+
+  
+
+})
+// select all from where something matches something
+// for searching for people
+// response is a "render" on the handlebars page.
+
+app.get("/api/newEvent", function(req, res) {
+
+})
+// select all from where something matches something
+// for searching for events
+// response is a "render" on the handlebars page.
