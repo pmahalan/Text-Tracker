@@ -54,6 +54,18 @@ module.exports = function(app) {
       });
   });
 
+  app.delete("/api/events/:id", function(req, res) {
+    db.Events.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function() {
+        res.json(data);
+      });
+  });
+
+
   app.put("/api/users", function(req, res) {
     db.Post.update(req.body,
       {
