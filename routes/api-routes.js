@@ -3,11 +3,12 @@ var db = require("../models");
 
 module.exports = function(app) {
  
-  // POST route for saving a new user!
+  // #1 -- POST route for creating + saving a new user!
   app.post("/api/users", function(req, res) {
     db.results.create({
+    //"results" above refers to line 9 in user.js (models).
 
-      date_texted: req.body.date_texted,
+      createdAt: req.body.createdAt,
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       cell: req.body.last_name,
@@ -23,10 +24,10 @@ module.exports = function(app) {
     });
   });
 
-  // Route for getting some data about registering events.
-
+  // #2 -- Route for creating + saving a new event!
   app.post("/api/newEvent", function(req, res) {
     db.Events.create({
+    //"Events" above refers to line 9 in events.js (models).
 
       date_event: req.body.date_event,
       title: req.body.title,
@@ -43,31 +44,23 @@ module.exports = function(app) {
     });
   });
 
+  // #3 -- Route for deleting a person.
   app.delete("/api/users/:id", function(req, res) {
     db.results.destroy({
+    //"results" above refers to line 9 in user.js (models).
       where: {
         id: req.params.id
       }
     })
-      .then(function() {
+      .then(function(data) {
         res.json(data);
       });
-  });
+    });
 
-  app.delete("/api/events/:id", function(req, res) {
-    db.Events.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(function() {
-        res.json(data);
-      });
-  });
-
-
+  // #4 -- Route for updating a person.
   app.put("/api/users", function(req, res) {
     db.results.update(req.body,
+    //"results" above refers to line 9 in user.js (models).
       {
         where: {
           cell: req.body.cell
@@ -78,29 +71,40 @@ module.exports = function(app) {
       });
   });
 
-  app.put("/api/events", function(req, res) {
-    db.Events.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      })
+  // #5 -- Route for deleting an event. 
+  app.delete("/api/newEvent/:id", function(req, res) {
+    db.Events.destroy({
+    //"Events" above refers to line 9 in events.js (models).
+      where: {
+        id: req.params.id
+      }
+    })
       .then(function(data) {
         res.json(data);
       });
+    });
+
+  // #6 -- Route for updating an event. 
+  app.put("/api/newEvent", function(req, res) {
+    db.Events.update(req.body,
+    //"Events" above refers to line 9 in events.js (models).
+      {
+        where: {
+          cell: req.body.cell
+        }
+      })
+      .then(function(dbPost) {
+        res.json(dbPost);
+      });
+    });
+
+  // #7 -- Route for searching for a person (app.get) then rendering result (res.render).
+  app.get("/api/users", function(req, res) {
+
   });
+  // #8 -- Route for searching for an event (app.get) then rendering result (res.render).
+  app.get("/api/newEvent", function(req, res) {
+
+  });
+
 };
-
-app.get("/api/users", function(req, res) {
-
-})
-// select all from where something matches something
-// for searching for people
-// response is a "render" on the handlebars page.
-
-app.get("/api/newEvent", function(req, res) {
-
-})
-// select all from where something matches something
-// for searching for events
-// response is a "render" on the handlebars page.

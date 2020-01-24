@@ -7,6 +7,7 @@
 
 module.exports = function(sequelize, Datatypes){
 // Creates a "results" model that matches up with DB
+
 var Users = sequelize.define("user", {
     date_texted: Datatypes.DATE,
     first_name: Datatypes.STRING,
@@ -15,6 +16,7 @@ var Users = sequelize.define("user", {
     email: Datatypes.STRING,
     role: Datatypes.STRING,
     keyword: Datatypes.STRING
+
   });
 
  // Makes the results Model available for index.js
