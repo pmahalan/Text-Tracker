@@ -8,7 +8,7 @@ var sequelize = require("../config/connection.js");
 // Creates a "results" model that matches up with DB
 var results = sequelize.define("people", {
 
-    date_texted: Sequelize.DATE,
+    createdAt: Sequelize.DATE,
     first_name: Sequelize.STRING,
     last_name: Sequelize.STRING,
     cell: Sequelize.BIGINT,
