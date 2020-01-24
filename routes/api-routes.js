@@ -99,12 +99,6 @@ module.exports = function(app) {
     });
 
   // #7 -- Route for searching for a person (app.get) then rendering result (res.render).
-  app.get("/api/users", function(req, res) {
-
-  });
-  // #8 -- Route for searching for an event (app.get) then rendering result (res.render).
-  app.get("/api/newEvent", function(req, res) {
-
-  });
+  
 
 };
