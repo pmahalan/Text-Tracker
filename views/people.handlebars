@@ -12,7 +12,9 @@
           <p>Cell number:{{cell}}</p>
           <p>Email: {{email}}</p>
           <p>Role: {{role}}</p>
+            {{#each}}
           <p>Event keyword texted:{{keyword}}</p>
+            {{/each}}
           </ul>
           {{!-- Delete Button --}}
           <a id="deletePerson" class="row right btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
