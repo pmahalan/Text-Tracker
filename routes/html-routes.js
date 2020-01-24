@@ -5,10 +5,8 @@ var express = require("express");
 var connection = require("../config/connection");
 var Sequelize = require("sequelize");
 
-
-module.exports = function (app) {
-
-
+module.exports = function(app) {
+  
   app.get('/', function (req, res, next) {
     //call to model (query)
     res.render('index');
