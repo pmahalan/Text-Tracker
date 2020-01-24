@@ -1,30 +1,41 @@
 // Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
+var models = require("../models");
+var express = require("express");
+var connection = require("../config/connection");
+var Sequelize = require("sequelize");
 
 
+module.exports = function (app) {
 
-module.exports = function(app) {
 
-  app.get("/", function(req, res) {
-   
-    if (req.user) {
-      res.redirect("/users");
-    }
-    res.sendFile(path.join(__dirname, "../public/index.html"));
+  app.get('/', function (req, res, next) {
+    //call to model (query)
+    res.render('index');
   });
 
-  app.get("/users", function(req, res) {
-
-    if (req.user) {
-      res.redirect("/users");
-    }
-    res.sendFile(path.join(__dirname, "../public/users.html"));
-    // ^ we will need to create a new handlebars page for this
-
+  app.get('/newPerson', function (req, res, next) {
+    //call to model (query)
+    console.log("this is working");
+    res.render('newPerson');
   });
 
-  app.get("/events", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/newEvent.html"));
+
+  app.get('/newEvent', function (req, res, next) {
+    //call to model (query)
+    res.render('newEvent');
+  });
+
+
+  app.get('/users', function (req, res, next) {
+    //call to model (query)
+    res.render('people', {data});
+  });
+
+
+  app.get('/events', function (req, res, next) {
+    //call to model (query)
+    res.render('events',  {data});
   });
 
 };
