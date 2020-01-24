@@ -1,8 +1,6 @@
 // Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
 
-
-
 module.exports = function(app) {
 
   app.get("/", function(req, res) {
@@ -20,7 +18,6 @@ module.exports = function(app) {
     }
     res.sendFile(path.join(__dirname, "../public/users.html"));
     // ^ we will need to create a new handlebars page for this
-
   });
 
   app.get("/events", function(req, res) {
