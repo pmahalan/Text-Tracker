@@ -5,7 +5,7 @@ module.exports = function(app) {
  
   // #1 -- POST route for creating + saving a new user!
   app.post("/api/users", function(req, res) {
-    db.results.create({
+    db.Users.create({
     //"results" above refers to line 9 in user.js (models).
 
       createdAt: req.body.createdAt,
@@ -46,7 +46,7 @@ module.exports = function(app) {
 
   // #3 -- Route for deleting a person.
   app.delete("/api/users/:id", function(req, res) {
-    db.results.destroy({
+    db.Users.destroy({
     //"results" above refers to line 9 in user.js (models).
       where: {
         id: req.params.id
@@ -59,7 +59,7 @@ module.exports = function(app) {
 
   // #4 -- Route for updating a person.
   app.put("/api/users", function(req, res) {
-    db.results.update(req.body,
+    db.Users.update(req.body,
     //"results" above refers to line 9 in user.js (models).
       {
         where: {
