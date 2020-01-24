@@ -5,7 +5,7 @@ USE people_db;
 CREATE TABLE people (
     
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
- 	createdAt TIMESTAMP not null,
+ 	createdAt TIMESTAMP not null DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     first_name VARCHAR(60),
     last_name VARCHAR(60),
     cell BIGINT,
@@ -17,7 +17,7 @@ CREATE TABLE people (
 
 CREATE TABLE events (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
- 	createdAt TIMESTAMP not null,
+ 	createdAt TIMESTAMP not null DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     title VARCHAR (100),
     location VARCHAR (60),
     host VARCHAR(60),

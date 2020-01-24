@@ -1,19 +1,31 @@
 $(document).ready(function () {
   $('select').formSelect();
 
+  // SEARCH FOR PERSON (FULL NAME)========================
+  
   // When newPerson (submit) button is pressed
   $("#newSearch").on("click", function (event) {
     // Prevents default behavior
     event.preventDefault();
 
-    // Collects data from form
-    // Getting references to our form and input
-    let searchValue = $("#search").val().trim();
-    let optionValue = $("#searchParam").val();
-
+    // Collects data from form, getting references to our form and input
+    // Throws error if no search parameter was chosen
     if (optionValue === "") {
-      return alert("You must choose a search parameter.")
+      return alert("You must choose a search parameter.");
     };
+    // splits search string into separate words at each space
+    let searchText = $("#search").val().trim().split(" ");
+    // Throws error if a person tries to input more than just a first and last name
+    if (searchText === "") {
+      return alert("The search field cannot be empty.");
+    };
+    
+    // Loops over the search text array and assigns variables
+    for (let i=0; i<searchText.length; i++) {
+      let searchParams = [];
+       = searchText[i];
+    }
+    let optionValue = $("#searchParam").val();
 
     let newSearch = {
       searchFor: searchValue,
@@ -36,13 +48,12 @@ $(document).ready(function () {
     // sends ajax post request
     // postPerson(createdPerson)
   });
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  // SEARCH FOR EVENT ========================
 
 
 });
