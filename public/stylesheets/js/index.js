@@ -11,6 +11,10 @@ $(document).ready(function () {
     let searchValue = $("#search").val().trim();
     let optionValue = $("#searchParam").val();
 
+    if (optionValue === "") {
+      return alert("You must choose a search parameter.")
+    };
+
     let newSearch = {
       searchFor: searchValue,
       searchIn: optionValue,
