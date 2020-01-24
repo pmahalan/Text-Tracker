@@ -39,4 +39,22 @@ $(document).ready(function () {
     // sends ajax post request
     postPerson(createdPerson)
   });
+
+  // Delete Person on click
+
+  $("#deletePerson").on("click", function (event) {
+    // add details here
+    // do a get request for person
+    
+    // declare id variable
+
+    // make ajax delete req
+    $.ajax({
+      method: "DELETE",
+      url: "/api/posts/" + id
+    })
+      .then(function() {
+        window.location.replace("/index");
+      });
+  });
 });
