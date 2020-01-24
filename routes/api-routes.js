@@ -66,10 +66,10 @@ module.exports = function(app) {
           cell: req.body.cell
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(data) {
+        res.json(data);
       });
-    });
+  });
 
   // #5 -- Route for deleting an event. 
   app.delete("/api/newEvent/:id", function(req, res) {
