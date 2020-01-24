@@ -12,6 +12,23 @@ module.exports = function(app) {
     res.render('index');
   });
 
+  app.get("/api/users/cell/:cell", function(req, res) {
+    // Add sequelize code to find all posts where the category is equal to req.params.category,
+    // return the result to the user with res.json
+    db.Users.findOne({where: {cell: req.params.cell}}).then((data)=>{
+      res.json(data);
+    })
+  });
+
+  app.get("/api/events/keyword/:keyword", function(req, res) {
+    // Add sequelize code to find all posts where the category is equal to req.params.category,
+    // return the result to the user with res.json
+    db.Events.findOne({where: {keyword: req.params.keyword}}).then((data)=>{
+      res.json(data);
+    })
+  });
+
+
   app.get('/newPerson', function (req, res, next) {
     
     

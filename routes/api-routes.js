@@ -90,7 +90,7 @@ module.exports = function(app) {
     //"Events" above refers to line 9 in events.js (models).
       {
         where: {
-          cell: req.body.cell
+          keyword: req.body.keyword
         }
       })
       .then(function(dbPost) {
