@@ -29,13 +29,23 @@ module.exports = function (app) {
 
   app.get('/users', function (req, res, next) {
     //call to model (query)
+    const query = "SELECT * FROM people";
+     
+    connection.query(query, function(err, data){
+      if(err) throw err;
+     
     res.render('people', {data});
   });
 
 
   app.get('/events', function (req, res, next) {
     //call to model (query)
-    res.render('events',  {data});
+    const query = "SELECT * FROM events";
+     
+    connection.query(query, function(err, data){
+      if(err) throw err;
+     
+    res.render('events', {data});
   });
 
 };
