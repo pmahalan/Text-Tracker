@@ -21,35 +21,56 @@ $(document).ready(function () {
     };
     
     switch(optionValue) {
-      case Events:
-        // code block
-        getEvents();
+      case eventName:
+        // when optionValue = this case, calls associated function
+        getEventsByName();
         break;
-      case People:
-        // code block
-        getPeople();
+      case eventKeyword:
+        // when optionValue = this case, calls associated function
+        getEventsByKeyword();
         break;
-      default:
-        // code block
+      case personName:
+        // when optionValue = this case, calls associated function
+        getPersonByName();
+        break;
+      case personCell:
+        // when optionValue = this case, calls associated function
+        getPersonByCell();
+        break;
     }
   });
   
-  // SEARCH FOR EVENT ========================
+  // ***********************************
+  //        SEARCH FUNCTIONS
+  // ***********************************
+
+  // SEARCH FOR EVENT BY NAME  ========================
+
+
+  // SEARCH FOR EVENT BY KEYWORD  ========================
+
+
+  // SEARCH FOR PERSON BY NAME  ========================
+  function getPersonByName() {
 
     // splits search string into separate words at each space
     let searchText = $("#search").val().trim().split(" ");
-    // Throws error if a person tries to input more than just a first and last name
-    if (searchText === "") {
-      return alert("The search field cannot be empty.");
-    };
-    // Throws error if 
+      // Throws error if a person tries to input more than just a first and last name
+      if (searchText === "") {
+        return alert("The search field cannot be empty.");
+      };
+      // Throws error if searchText is more than 2 indices long.
+      if (searchText.length > 2) {
+        return alert("Please search by first and last name only.")
+      }
 
     //assigns variables to the words in searchText array
-    let firstName = 
+    let firstName = searchText[0];
+    let lastName = searchText[1];
 
     let newSearch = {
-      searchFor: searchValue,
-      searchIn: optionValue
+      first_name: firstName,
+      last_name: lastName
     };
 
     // Stringify personData
@@ -67,5 +88,39 @@ $(document).ready(function () {
     // }
     // sends ajax post request
     // postPerson(createdPerson)
+  }
+
+  // SEARCH FOR PERSON BY CELL ========================
+  function getPersonByCell() {
+
+    // splits search string into separate words at each space
+    let searchText = $("#search").val().trim();
+    // Throws error if a person tries to input more than just a first and last name
+      if (searchText === "") {
+        return alert("The search field cannot be empty.");
+      };
+    //Cleans search text to be numbers only
+    let cleanedText = searchText.replace(/\D+/g, '');
+
+    let newSearch = {
+      cell: cleanedText
+    };
+
+    // Stringify personData
+    let searchParam = JSON.stringify(newSearch);
+    console.log(searchParam);
+
+    // makes Ajax get request
+    function getCell(data) {
+      $.get("/api/users/cell/" + data) 
+        .then(function (response) {
+          console.log(response);
+          // If there's an error, handle it by throwing up a bootstrap alert
+        })
+    }
+    // sends ajax request
+    getCell(cleanedText);
+  }
+
 
 });
