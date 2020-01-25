@@ -15,25 +15,25 @@ $(document).ready(function () {
     //Collects the value of the form's search parameter
     let optionValue = $("#searchParam").val();
 
-    // Throws error if no search parameter was chosen
+    // // Throws error if no search parameter was chosen
     if (optionValue === "") {
       return alert("You must choose a search parameter.");
     };
     
     switch(optionValue) {
-      case eventName:
+      case "eventName":
         // when optionValue = this case, calls associated function
         getEventsByName();
         break;
-      case eventKeyword:
+      case "eventKeyword":
         // when optionValue = this case, calls associated function
         getEventsByKeyword();
         break;
-      case personName:
+      case "personName":
         // when optionValue = this case, calls associated function
         getPersonByName();
         break;
-      case personCell:
+      case "personCell":
         // when optionValue = this case, calls associated function
         getPersonByCell();
         break;
@@ -102,12 +102,8 @@ $(document).ready(function () {
     //Cleans search text to be numbers only
     let cleanedText = searchText.replace(/\D+/g, '');
 
-    let newSearch = {
-      cell: cleanedText
-    };
-
-    // Stringify personData
-    let searchParam = JSON.stringify(newSearch);
+    // Stringify cleanedText
+    let searchParam = JSON.stringify(cleanedText);
     console.log(searchParam);
 
     // makes Ajax get request

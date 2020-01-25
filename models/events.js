@@ -6,7 +6,7 @@
 // var sequelize = require("../config/connection.js");
 module.exports = function(sequelize, Datatypes){
 // Creates a "User" model that matches up with DB
-var Events = sequelize.define("events", {
+var Events = sequelize.define("Events", {
 
     date_event: Datatypes.DATE,
     title: Datatypes.STRING,
