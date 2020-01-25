@@ -3,7 +3,7 @@
 <div class="container">
 {{!-- adds a full width card with person's info --}}
   {{#each person}}
-  <div class="col s12 m7">
+  <div data-id:{{id}} class="col s12 m7">
     <h2 class="header">{{first_name}} {{last_name}}</h2>
     <div class="card horizontal">
       <div class="card-stacked">

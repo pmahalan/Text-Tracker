@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  // initializes datepicker for New Event Form
-  $('.datepicker').datepicker();
 
   // When newEvent (submit) button is pressed
   $("#newEvent").on("click", function (event) {
@@ -10,32 +8,33 @@ $(document).ready(function () {
     // Collects data from form
     // Getting references to our form and input
     let eventName = $("#title").val().trim();
-    let eventDate = $("#date").val().trim();
+    let eventKeyword= $("#keyword").val().trim();
     let eventLocation = $("#location").val();
     let eventHost = $("#host").val().trim();
-    // let eventKeyword = $("#keyword");
     
     let eventData = {
       name: eventName,
-      date: eventDate,
       location: eventLocation,
-      host: eventHost
-      // keyword: eventKeyword.val().trim(),
+      host: eventHost,
+      keyword: eventKeyword
     };
 
     // Stringify eventData
     let createdEvent = JSON.stringify(eventData);
 
-    // makes Ajax post request
-    function postEvent(createdEvent) {
-      $.post("https://6a7343ec-2977-44f3-8ba1-b1dcec3207fa.mock.pstmn.io", createdEvent)
-        .then(function (data) {
-          console.log(data);
+    console.log(createdEvent)
+
+    // creates Ajax post request
+    function postEvent(data) {
+      $.post("/api/newEvent", data)
+        .then(function (response) {
+          console.log(response);
           window.location.replace("/newEvent");
           // If there's an error, handle it by throwing up a bootstrap alert
         })
     }
     // sends ajax post request
-    // postEvent(createdEvent)
+    postEvent(createdEvent)
   });
+  
 });
