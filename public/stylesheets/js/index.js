@@ -40,17 +40,69 @@ $(document).ready(function () {
     }
   });
   
+
   // ***********************************
   //        SEARCH FUNCTIONS
   // ***********************************
 
+
   // SEARCH FOR EVENT BY NAME  ========================
+  
+
+  function getEventsByName() {
+
+    // splits search string into separate words at each space
+    let searchText = $("#search").val().trim();
+    // Throws error if a person tries to input more than just a first and last name
+      if (searchText === "") {
+        return alert("The search field cannot be empty.");
+      };
+
+      console.log(searchText);
+
+    // creates Ajax get request
+    function getEventName(data) {
+      $.get("/api/events/name/" + data) 
+        .then(function (response) {
+          console.log(response);
+          // If there's an error, handle it by throwing up a bootstrap alert
+        })
+    }
+    // sends ajax request
+    getEventName(searchText);
+  }
 
 
   // SEARCH FOR EVENT BY KEYWORD  ========================
+  
+
+  function getEventsByKeyword() {
+
+    // splits search string into separate words at each space
+    let searchText = $("#search").val().trim();
+    // Throws error if a person tries to input more than just a first and last name
+      if (searchText === "") {
+        return alert("The search field cannot be empty.");
+      };
+
+      console.log(searchText);
+
+    // creates Ajax get request
+    function getEventKey(data) {
+      $.get("/api/events/keyword/" + data) 
+        .then(function (response) {
+          console.log(response);
+          // If there's an error, handle it by throwing up a bootstrap alert
+        })
+    }
+    // sends ajax request
+    getEventKey(searchText);
+  }
 
 
   // SEARCH FOR PERSON BY NAME  ========================
+
+
   function getPersonByName() {
 
     // splits search string into separate words at each space
@@ -68,29 +120,24 @@ $(document).ready(function () {
     let firstName = searchText[0];
     let lastName = searchText[1];
 
-    let newSearch = {
-      first_name: firstName,
-      last_name: lastName
-    };
+    console.log(firstName, lastName);
 
-    // Stringify personData
-    let searchParam = JSON.stringify(newSearch);
-    console.log(searchParam);
-
-    // // makes Ajax post request
-    // function postPerson(createdPerson) {
-    //   $.post("https://6a7343ec-2977-44f3-8ba1-b1dcec3207fa.mock.pstmn.io", createdPerson)
-    //     .then(function (data) {
-    //       console.log(data);
-    //       window.location.replace("/newPerson");
-    //       // If there's an error, handle it by throwing up a bootstrap alert
-    //     })
-    // }
+    // makes Ajax post request
+    function getPersonName(name1, name2) {
+      $.post("api/users/name/" + name1 + "/" + name2)
+        .then(function (data) {
+          console.log(data);
+          // If there's an error, handle it by throwing up a bootstrap alert
+        })
+    }
     // sends ajax post request
-    // postPerson(createdPerson)
+    getPersonName(firstName, lastName);
   }
 
+
   // SEARCH FOR PERSON BY CELL ========================
+
+
   function getPersonByCell() {
 
     // splits search string into separate words at each space
@@ -99,14 +146,11 @@ $(document).ready(function () {
       if (searchText === "") {
         return alert("The search field cannot be empty.");
       };
+
     //Cleans search text to be numbers only
     let cleanedText = searchText.replace(/\D+/g, '');
 
-    // Stringify cleanedText
-    let searchParam = JSON.stringify(cleanedText);
-    console.log(searchParam);
-
-    // makes Ajax get request
+    // creates Ajax get request
     function getCell(data) {
       $.get("/api/users/cell/" + data) 
         .then(function (response) {
@@ -114,9 +158,8 @@ $(document).ready(function () {
           // If there's an error, handle it by throwing up a bootstrap alert
         })
     }
+
     // sends ajax request
     getCell(cleanedText);
   }
-
-
 });
