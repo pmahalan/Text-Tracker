@@ -1,35 +1,55 @@
 $(document).ready(function () {
   $('select').formSelect();
 
-  // SEARCH FOR PERSON (FULL NAME)========================
-  
-  // When newPerson (submit) button is pressed
+  // ***********************************
+  //        STARTS A NEW SEARCH
+  // ***********************************
+
+  // When newSearch (submit) button is pressed
   $("#newSearch").on("click", function (event) {
     // Prevents default behavior
     event.preventDefault();
 
     // Collects data from form, getting references to our form and input
+
+    //Collects the value of the form's search parameter
+    let optionValue = $("#searchParam").val();
+
     // Throws error if no search parameter was chosen
     if (optionValue === "") {
       return alert("You must choose a search parameter.");
     };
+    
+    switch(optionValue) {
+      case Events:
+        // code block
+        getEvents();
+        break;
+      case People:
+        // code block
+        getPeople();
+        break;
+      default:
+        // code block
+    }
+  });
+  
+  // SEARCH FOR EVENT ========================
+
     // splits search string into separate words at each space
     let searchText = $("#search").val().trim().split(" ");
     // Throws error if a person tries to input more than just a first and last name
     if (searchText === "") {
       return alert("The search field cannot be empty.");
     };
-    
-    // Loops over the search text array and assigns variables
-    for (let i=0; i<searchText.length; i++) {
-      let searchParams = [];
-       = searchText[i];
-    }
-    let optionValue = $("#searchParam").val();
+    // Throws error if 
+
+    //assigns variables to the words in searchText array
+    let firstName = 
 
     let newSearch = {
       searchFor: searchValue,
-      searchIn: optionValue,
+      searchIn: optionValue
     };
 
     // Stringify personData
@@ -47,13 +67,5 @@ $(document).ready(function () {
     // }
     // sends ajax post request
     // postPerson(createdPerson)
-  });
-  
-  
-  
-  
-  
-  // SEARCH FOR EVENT ========================
-
 
 });
