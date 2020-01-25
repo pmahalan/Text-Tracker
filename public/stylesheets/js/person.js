@@ -50,7 +50,7 @@ $(document).ready(function () {
 
     // create ajax delete req
     function deletePerson(data) {
-    $.delete("/api/posts/" + data)
+    $.delete("/api/newEvent/" + data)
       .then(function(response) {
         console.log(response)
         window.location.replace("/index");
