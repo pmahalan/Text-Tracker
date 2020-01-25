@@ -1,35 +1,76 @@
 $(document).ready(function () {
   $('select').formSelect();
 
-  // SEARCH FOR PERSON (FULL NAME)========================
-  
-  // When newPerson (submit) button is pressed
+  // ***********************************
+  //        STARTS A NEW SEARCH
+  // ***********************************
+
+  // When newSearch (submit) button is pressed
   $("#newSearch").on("click", function (event) {
     // Prevents default behavior
     event.preventDefault();
 
     // Collects data from form, getting references to our form and input
-    // Throws error if no search parameter was chosen
+
+    //Collects the value of the form's search parameter
+    let optionValue = $("#searchParam").val();
+
+    // // Throws error if no search parameter was chosen
     if (optionValue === "") {
       return alert("You must choose a search parameter.");
     };
+    
+    switch(optionValue) {
+      case "eventName":
+        // when optionValue = this case, calls associated function
+        getEventsByName();
+        break;
+      case "eventKeyword":
+        // when optionValue = this case, calls associated function
+        getEventsByKeyword();
+        break;
+      case "personName":
+        // when optionValue = this case, calls associated function
+        getPersonByName();
+        break;
+      case "personCell":
+        // when optionValue = this case, calls associated function
+        getPersonByCell();
+        break;
+    }
+  });
+  
+  // ***********************************
+  //        SEARCH FUNCTIONS
+  // ***********************************
+
+  // SEARCH FOR EVENT BY NAME  ========================
+
+
+  // SEARCH FOR EVENT BY KEYWORD  ========================
+
+
+  // SEARCH FOR PERSON BY NAME  ========================
+  function getPersonByName() {
+
     // splits search string into separate words at each space
     let searchText = $("#search").val().trim().split(" ");
-    // Throws error if a person tries to input more than just a first and last name
-    if (searchText === "") {
-      return alert("The search field cannot be empty.");
-    };
-    
-    // Loops over the search text array and assigns variables
-    for (let i=0; i<searchText.length; i++) {
-      let searchParams = [];
-       = searchText[i];
-    }
-    let optionValue = $("#searchParam").val();
+      // Throws error if a person tries to input more than just a first and last name
+      if (searchText === "") {
+        return alert("The search field cannot be empty.");
+      };
+      // Throws error if searchText is more than 2 indices long.
+      if (searchText.length > 2) {
+        return alert("Please search by first and last name only.")
+      }
+
+    //assigns variables to the words in searchText array
+    let firstName = searchText[0];
+    let lastName = searchText[1];
 
     let newSearch = {
-      searchFor: searchValue,
-      searchIn: optionValue,
+      first_name: firstName,
+      last_name: lastName
     };
 
     // Stringify personData
@@ -47,13 +88,35 @@ $(document).ready(function () {
     // }
     // sends ajax post request
     // postPerson(createdPerson)
-  });
-  
-  
-  
-  
-  
-  // SEARCH FOR EVENT ========================
+  }
+
+  // SEARCH FOR PERSON BY CELL ========================
+  function getPersonByCell() {
+
+    // splits search string into separate words at each space
+    let searchText = $("#search").val().trim();
+    // Throws error if a person tries to input more than just a first and last name
+      if (searchText === "") {
+        return alert("The search field cannot be empty.");
+      };
+    //Cleans search text to be numbers only
+    let cleanedText = searchText.replace(/\D+/g, '');
+
+    // Stringify cleanedText
+    let searchParam = JSON.stringify(cleanedText);
+    console.log(searchParam);
+
+    // makes Ajax get request
+    function getCell(data) {
+      $.get("/api/users/cell/" + data) 
+        .then(function (response) {
+          console.log(response);
+          // If there's an error, handle it by throwing up a bootstrap alert
+        })
+    }
+    // sends ajax request
+    getCell(cleanedText);
+  }
 
 
 });
