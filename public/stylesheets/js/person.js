@@ -27,11 +27,12 @@ $(document).ready(function () {
     // Stringify personData
     let createdPerson = JSON.stringify(personData);
     console.log(createdPerson);
+    
     // makes Ajax post request
-    function postPerson(newPerson) {
-      $.post("/api/users", newPerson)
-        .then(function (data) {
-          console.log(data);
+    function postPerson(data) {
+      $.post("/api/users", data)
+        .then(function (response) {
+          console.log(response);
           window.location.replace("/newPerson");
           // If there's an error, handle it by throwing up a bootstrap alert
         })
@@ -43,18 +44,19 @@ $(document).ready(function () {
   // Delete Person on click
 
   $("#deletePerson").on("click", function (event) {
-    // add details here
-    // do a get request for person
     
     // declare id variable
+    let id = $(this).data("id");
 
-    // make ajax delete req
-    $.ajax({
-      method: "DELETE",
-      url: "/api/posts/" + id
-    })
-      .then(function() {
+    // create ajax delete req
+    function deletePerson(data) {
+    $.delete("/api/posts/" + data)
+      .then(function(response) {
+        console.log(response)
         window.location.replace("/index");
       });
+    }
+
+    deletePerson(id);
   });
 });
