@@ -3,7 +3,7 @@
 // *********************************************************************************
 
 var Sequelize = require("sequelize");
-var sequelize = new Sequelize("sequelize_people_db", "root", "rootroot", {
+var sequelize = new Sequelize("sequelize_people_db", "root", "root", {
   host: "localhost",
   port: 3306,
   dialect: "mysql",
