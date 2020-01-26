@@ -47,9 +47,9 @@ I WANT TO   use an application which AUTOMATES the storage of incoming informati
 
 4. Demo
 
-![App Screenshot](1.jpg "Picture of Website")
-![App Screenshot](2.jpg "Picture of Website")
-![App Screenshot](3.jpg "Picture of Website")
+![App Screenshot](/assets/1.jpg "Picture of Website")
+![App Screenshot](/assets/2.jpg "Picture of Website")
+![App Screenshot](/assets/3.jpg "Picture of Website")
 
 
 5. Directions for Future Development
