@@ -4,14 +4,21 @@ $(document).ready(function () {
   $("#newEvent").on("click", function (event) {
     // Prevents default behavior
     event.preventDefault();
-    
+
     // Collects data from form
     // Getting references to our form and input
     let eventName = $("#title").val().trim();
-    let eventKeyword= $("#keyword").val().trim();
+    let eventKeyword = $("#keyword").val().trim();
     let eventLocation = $("#location").val();
     let eventHost = $("#host").val().trim();
-    
+
+    //if needed fields are empty, this will send an error notice:
+    if (eventName === "" || eventKeyword === "") {
+      //Creates Toast for error messages
+      let toastHTML = '<span>The name and keyword fields cannot be empty.</span>';
+      return M.toast({ html: toastHTML, displayLength: 2000 });
+    };
+
     let eventData = {
       name: eventName,
       location: eventLocation,
@@ -36,5 +43,5 @@ $(document).ready(function () {
     // sends ajax post request
     postEvent(createdEvent)
   });
-  
+
 });

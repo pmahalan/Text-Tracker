@@ -17,8 +17,10 @@ $(document).ready(function () {
 
     // // Throws error if no search parameter was chosen
     if (optionValue === "") {
-      return alert("You must choose a search parameter.");
+      let toastHTML = '<span>You must choose a search parameter.</span>';
+      return M.toast({ html: toastHTML, displayLength: 2000 });
     };
+    
     
     switch(optionValue) {
       case "eventName":
@@ -37,7 +39,7 @@ $(document).ready(function () {
         // when optionValue = this case, calls associated function
         getPersonByCell();
         break;
-    }
+    };
   });
   
 
@@ -55,7 +57,8 @@ $(document).ready(function () {
     let searchText = $("#search").val().trim();
     // Throws error if a person tries to input more than just a first and last name
       if (searchText === "") {
-        return alert("The search field cannot be empty.");
+        let toastHTML = '<span>The search field cannot be empty.</span>';
+        return M.toast({ html: toastHTML, displayLength: 2000 });
       };
 
       console.log(searchText);
@@ -67,10 +70,10 @@ $(document).ready(function () {
           console.log(response);
           // If there's an error, handle it by throwing up a bootstrap alert
         })
-    }
+    };
     // sends ajax request
     getEventName(searchText);
-  }
+  };
 
 
   // SEARCH FOR EVENT BY KEYWORD  ========================
@@ -82,7 +85,8 @@ $(document).ready(function () {
     let searchText = $("#search").val().trim();
     // Throws error if a person tries to input more than just a first and last name
       if (searchText === "") {
-        return alert("The search field cannot be empty.");
+        let toastHTML = '<span>The search field cannot be empty.</span>';
+        return M.toast({ html: toastHTML, displayLength: 2000 });
       };
 
       console.log(searchText);
@@ -97,7 +101,7 @@ $(document).ready(function () {
     }
     // sends ajax request
     getEventKey(searchText);
-  }
+  };
 
 
   // SEARCH FOR PERSON BY NAME  ========================
@@ -109,11 +113,14 @@ $(document).ready(function () {
     let searchText = $("#search").val().trim().split(" ");
       // Throws error if a person tries to input more than just a first and last name
       if (searchText === "") {
-        return alert("The search field cannot be empty.");
+        let toastHTML = '<span>The search field cannot be empty.</span>';
+        return M.toast({ html: toastHTML, displayLength: 2000 });
       };
+
       // Throws error if searchText is more than 2 indices long.
       if (searchText.length > 2) {
-        return alert("Please search by first and last name only.")
+        let toastHTML = '<span>Please search by first and last name only.</span>';
+        return M.toast({ html: toastHTML, displayLength: 2000 });
       }
 
     //assigns variables to the words in searchText array
@@ -132,7 +139,7 @@ $(document).ready(function () {
     }
     // sends ajax post request
     getPersonName(firstName, lastName);
-  }
+  };
 
 
   // SEARCH FOR PERSON BY CELL ========================
@@ -144,7 +151,8 @@ $(document).ready(function () {
     let searchText = $("#search").val().trim();
     // Throws error if a person tries to input more than just a first and last name
       if (searchText === "") {
-        return alert("The search field cannot be empty.");
+        let toastHTML = '<span>The search field cannot be empty.</span>';
+        return M.toast({ html: toastHTML, displayLength: 2000 });
       };
 
     //Cleans search text to be numbers only
@@ -161,5 +169,5 @@ $(document).ready(function () {
 
     // sends ajax request
     getCell(cleanedText);
-  }
+  };
 });

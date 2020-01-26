@@ -1,9 +1,10 @@
 $(document).ready(function () {
+
   // When newPerson (submit) button is pressed
   $("#newPerson").on("click", function (event) {
     // Prevents default behavior
     event.preventDefault();
-    
+
     // Collects data from form
     // Getting references to our form and input
     let personFirst = $("#firstName").val().trim();
@@ -13,8 +14,15 @@ $(document).ready(function () {
     let personEmail = $("#email").val().trim();
     let personKeyword = $("#keyword").val().trim();
 
+    //if needed fields are empty, this will send an error notice:
+    if (personKeyword === "" || personFirst === "") {
+      //Creates Toast for error messages
+      let toastHTML = '<span>The name and keyword fields cannot be empty.</span>';
+      return M.toast({ html: toastHTML, displayLength: 2000 });
+    };
+
     // parseInt for cell number
-    
+
     let personData = {
       first_name: personFirst,
       last_name: personLast,
@@ -27,7 +35,7 @@ $(document).ready(function () {
     // Stringify personData
     let createdPerson = JSON.stringify(personData);
     console.log(createdPerson);
-    
+
     // makes Ajax post request
     function postPerson(data) {
       $.post("/api/users", data)
@@ -36,7 +44,8 @@ $(document).ready(function () {
           window.location.replace("/newPerson");
           // If there's an error, handle it by throwing up a bootstrap alert
         })
-    }
+    };
+    
     // sends ajax post request
     postPerson(createdPerson)
   });
@@ -44,18 +53,18 @@ $(document).ready(function () {
   // Delete Person on click
 
   $("#deletePerson").on("click", function (event) {
-    
+
     // declare id variable
     let id = $(this).data("id");
 
     // create ajax delete req
     function deletePerson(data) {
-    $.delete("/api/newEvent/" + data)
-      .then(function(response) {
-        console.log(response)
-        window.location.replace("/index");
-      });
-    }
+      $.delete("/api/newEvent/" + data)
+        .then(function (response) {
+          console.log(response)
+          window.location.replace("/index");
+        });
+    };
 
     deletePerson(id);
   });
