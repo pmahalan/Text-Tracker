@@ -1,9 +1,7 @@
 // Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
-var models = require("../models");
-var express = require("express");
-var connection = require("../config/connection");
-var Sequelize = require("sequelize");
+var db = require("../models");
+
 
 module.exports = function(app) {
   
