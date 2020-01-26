@@ -1,6 +1,6 @@
 # Make Me Laugh!
 
-1. Elevator Pitch
+#### Elevator Pitch
 
 "Text Tracker" is an application designed for allowing users to track event attendance. It utilizes clearstream.io, a communications service which maintains and updates information via a webhook. In Text Tracker, clearstream's webhook works in conjuction with a MySQL database, as well as front-end webpages, to provide a full-stack platform. 
 
@@ -11,16 +11,13 @@ Additionally, the front-end Text Tracker website allows users to manage informat
 More information about clearsteam.io can be found here <https://clearstream.io/>, and information about webhooks vs. APIs can be found here https://sendgrid.com/blog/webhook-vs-api-whats-difference/
 
 
-2. Concept
-
-User Story:
-
-    AS AN   event manager,
-I WANT TO   use an application which AUTOMATES the storage of incoming information,
- SO I CAN   not have to manually sift through it and input each new record.
+#### User Story:
+AS AN   event manager, 
+I WANT TO    use an application which AUTOMATES the storage of incoming information,
+SO I CAN    not have to manually sift through it and input each new record.
  
 
-3. Process
+#### Process
 
     New Technologies:
     - clearstream.io (webhook) <https://clearstream.io/>
@@ -45,17 +42,17 @@ I WANT TO   use an application which AUTOMATES the storage of incoming informati
 
     Additionally we were able to successfully deploy our application's server to Heroku, and manage its settings within Heroku so that each push made to our Github repository re-deployed the server. (This saved us the time of having to manually re-deploy our application to Heroku whenever we made changes to it.)
 
-4. Demo
+#### Demo
 
 ![App Screenshot](1.jpg "Picture of Website")
 ![App Screenshot](2.jpg "Picture of Website")
 ![App Screenshot](3.jpg "Picture of Website")
 
 
-5. Directions for Future Development
+#### Directions for Future Development
   
 
-6. Links
+#### Links
 
     GH pages: <https://pmahalan.github.io/Project_2/>
 
