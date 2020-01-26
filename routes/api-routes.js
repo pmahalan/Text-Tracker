@@ -29,7 +29,6 @@ module.exports = function(app) {
     db.Events.create({
     //"Events" above refers to line 9 in events.js (models).
 
-      date_event: req.body.date_event,
       title: req.body.title,
       location: req.body.location,
       host: req.body.host,

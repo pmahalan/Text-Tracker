@@ -50,3 +50,9 @@ h1 {
 	cursor: default;
 }
 /* end bottom navbar */
+
+/* element to ensure the bottom navbar doesn't cover up anything
+(placed on the last element of a page) */
+.bottom {
+	margin-bottom: 70px;
+}
