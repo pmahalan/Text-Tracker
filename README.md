@@ -35,12 +35,12 @@ Database workbench:
 - DBeaver <https://dbeaver.io/>
 
 Overcoming Challenges:
-- Getting the server-side of our application to work in conjuction with the front-end was a challenge. Establishing API routes and HTML routes took repeated effort and revision in order to achieve working code.
+    Getting the server-side of our application to work in conjuction with the front-end was a challenge. Establishing API routes and HTML routes took repeated effort and revision in order to achieve working code.
 
 Successes: 
-- Through persistant trial and error, we were able to successfully (1) get the user-end webpages to work, (2) get the server-side databases and routes to work, and (3) get the user-end and server-side to work in conjunction with each-other. 
+    Through persistant trial and error, we were able to successfully (1) get the user-end webpages to work, (2) get the server-side databases and routes to work, and (3) get the user-end and server-side to work in conjunction with each-other. 
 
-Additionally, we were able to successfully deploy our application's server to Heroku, and manage its settings within Heroku so that each push made to our Github repository re-deployed the server. (This saved us the time of having to manually re-deploy our application to Heroku whenever we made changes to it.)
+    Additionally, we were able to successfully deploy our application's server to Heroku, and manage its settings within Heroku so that each push made to our Github repository re-deployed the server. (This saved us the time of having to manually re-deploy our application to Heroku whenever we made changes to it.)
 
 
 #### Demo
