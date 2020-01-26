@@ -1,4 +1,8 @@
 $(document).ready(function () {
+  //Cancel preloader
+  const preloader = $('.progress');
+  preloader.fadeOut(500);
+
 
   // When newPerson (submit) button is pressed
   $("#newPerson").on("click", function (event) {
