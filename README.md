@@ -1,6 +1,6 @@
 # Make Me Laugh!
 
-#### Elevator Pitch
+## Elevator Pitch
 
 "Text Tracker" is an application designed for allowing users to track event attendance. It utilizes clearstream.io, a communications service which maintains and updates information via a webhook. In Text Tracker, clearstream's webhook works in conjuction with a MySQL database, as well as front-end webpages, to provide a full-stack platform. 
 
@@ -11,13 +11,13 @@ Additionally, the front-end Text Tracker website allows users to manage informat
 More information about clearsteam.io can be found here <https://clearstream.io/>, and information about webhooks vs. APIs can be found here https://sendgrid.com/blog/webhook-vs-api-whats-difference/
 
 
-#### User Story:
+## User Story:
 AS AN   event manager, 
 I WANT TO    use an application which AUTOMATES the storage of incoming information,
 SO I CAN    not have to manually sift through it and input each new record.
  
 
-#### Process   
+## Process   
 
 New Technologies:
 - clearstream.io (webhook) <https://clearstream.io/>
@@ -34,26 +34,28 @@ Databases:
 Database workbench:
 - DBeaver <https://dbeaver.io/>
 
-Overcoming Challenges:
-    Getting the server-side of our application to work in conjuction with the front-end was a challenge. Establishing API routes and HTML routes took repeated effort and revision in order to achieve working code.
+#### Overcoming Challenges
 
-Successes: 
-    Through persistant trial and error, we were able to successfully (1) get the user-end webpages to work, (2) get the server-side databases and routes to work, and (3) get the user-end and server-side to work in conjunction with each-other. 
+Getting the server-side of our application to work in conjuction with the front-end was a challenge. Establishing API routes and HTML routes took repeated effort and revision in order to achieve working code.
 
-    Additionally, we were able to successfully deploy our application's server to Heroku, and manage its settings within Heroku so that each push made to our Github repository re-deployed the server. (This saved us the time of having to manually re-deploy our application to Heroku whenever we made changes to it.)
+#### Successes
+
+Through persistant trial and error, we were able to successfully (1) get the user-end webpages to work, (2) get the server-side databases and routes to work, and (3) get the user-end and server-side to work in conjunction with each-other. 
+
+Additionally, we were able to successfully deploy our application's server to Heroku, and manage its settings within Heroku so that each push made to our Github repository re-deployed the server. (This saved us the time of having to manually re-deploy our application to Heroku whenever we made changes to it.)
 
 
-#### Demo
+## Demo
 
 ![App Screenshot](1.jpg "Picture of Website")
 ![App Screenshot](2.jpg "Picture of Website")
 ![App Screenshot](3.jpg "Picture of Website")
 
 
-#### Directions for Future Development
+## Directions for Future Development
 
   
-#### Links
+## Links
 
 GH pages: <https://pmahalan.github.io/Project_2/>
 
