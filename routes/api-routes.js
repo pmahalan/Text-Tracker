@@ -92,8 +92,8 @@ module.exports = function(app) {
           keyword: req.body.keyword
         }
       })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(data) {
+        res.json(data);
       });
     });
 
