@@ -36,8 +36,22 @@ $(document).ready(function () {
       $.post("/api/newEvent", data)
         .then(function (response) {
           console.log(response);
-          window.location.replace("/newEvent");
-          // If there's an error, handle it by throwing up a bootstrap alert
+          // Success message
+          let toastHTML = `<span><i class="material-icons">thumb_up</i> Success! </span>`;
+          M.toast({ html: toastHTML, displayLength: 2000 });
+        })
+        .then(() => {
+          //set Timeout
+          setTimeout(() => {
+            //reload the window
+            window.location.replace("/newPerson");
+          }, 800);
+        })
+        .catch((err) => {
+          // If there's an error, handle it by throwing up an alert
+          console.log(err)
+          let toastHTML = `<span><i class="material-icons">error</i> ${err} </span>`;
+          return M.toast({ html: toastHTML, displayLength: 2000 });
         })
     }
     // sends ajax post request

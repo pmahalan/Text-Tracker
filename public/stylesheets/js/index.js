@@ -68,8 +68,12 @@ $(document).ready(function () {
       $.get("/api/events/name/" + data) 
         .then(function (response) {
           console.log(response);
-          // If there's an error, handle it by throwing up a bootstrap alert
-        })
+          // If there's an error, handle it by throwing up an alert
+          if (err) {
+            let toastHTML = `<span><i class="material-icons">error</i>${err}</span>`;
+            return M.toast({ html: toastHTML, displayLength: 2000 });
+          }
+        });
     };
     // sends ajax request
     getEventName(searchText);
@@ -96,7 +100,7 @@ $(document).ready(function () {
       $.get("/api/events/keyword/" + data) 
         .then(function (response) {
           console.log(response);
-          // If there's an error, handle it by throwing up a bootstrap alert
+          // If there's an error, handle it by throwing up an alert
         })
     }
     // sends ajax request
@@ -134,7 +138,7 @@ $(document).ready(function () {
       $.post("api/users/name/" + name1 + "/" + name2)
         .then(function (data) {
           console.log(data);
-          // If there's an error, handle it by throwing up a bootstrap alert
+          // If there's an error, handle it by throwing up an alert
         })
     }
     // sends ajax post request
@@ -163,7 +167,7 @@ $(document).ready(function () {
       $.get("/api/users/cell/" + data) 
         .then(function (response) {
           console.log(response);
-          // If there's an error, handle it by throwing up a bootstrap alert
+          // If there's an error, handle it by throwing up an alert
         })
     }
 
