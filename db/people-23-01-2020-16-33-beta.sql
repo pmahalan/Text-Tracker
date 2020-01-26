@@ -23,7 +23,7 @@ CREATE TABLE `people` (
   `role` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
   `keyword` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) 
 
 INSERT INTO `people` VALUES ('1','1999-12-22 22:28:10','Lupe','Mayert','374501','cronin.kade@example.net','Ms.','Ltd'),
 ('2','1992-08-31 13:31:24','Alfredo','Zboncak','721','hodkiewicz.arne@example.com','Dr.','Group'),

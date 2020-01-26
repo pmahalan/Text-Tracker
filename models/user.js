@@ -9,7 +9,7 @@ module.exports = function(sequelize, Datatypes){
 // Creates a "results" model that matches up with DB
 
 var Users = sequelize.define("Users", {
-    date_texted: Datatypes.DATE,
+    createdAt: Datatypes.DATE,
     first_name: Datatypes.STRING,
     last_name: Datatypes.STRING,
     cell: Datatypes.BIGINT,
