@@ -13,7 +13,9 @@ More information about clearsteam.io can be found here <https://clearstream.io/>
 
 ## User Story:
 AS AN   event manager, 
+
 I WANT TO    use an application which AUTOMATES the storage of incoming information,
+
 SO I CAN    not have to manually sift through it and input each new record.
  
 
