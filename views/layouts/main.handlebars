@@ -7,7 +7,66 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://kit.fontawesome.com/83f190f6d5.js" crossorigin="anonymous"></script>
-  <link href="stylesheets/css/style.css" rel="stylesheet">
+  {{!-- <link href="stylesheets/css/style.css" type="text/css" rel="stylesheet"> --}}
+  <style>
+    form.signup,
+form.login {
+  margin-top: 50px;
+}
+
+/* headers */
+h1 {
+  color: #693668;
+}
+
+/* bottom navbar */
+.navbar-bottom {
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99;
+	height: 60px;
+	background: #1B1B3A;
+	padding: 15px 0;
+	box-shadow:  0 -4px 8px -6px #999;
+}
+
+.navbar-bottom a i {
+	font-size: 30px;
+	color: #A74482;
+	color: #fff;
+}
+
+.bar-center a i {
+	border: 2px solid #eee;
+	border-radius: 50%;
+	padding: 10px;
+	font-size: 15px;
+	margin-left: 22px;
+}
+
+.bar-center span {
+	position: relative;
+	left: -32px;
+	top: -20px;
+	background: #fff;
+	padding: 0px 6px;
+	border-radius: 50%;
+	color: #222;
+	font-weight: bold;
+	cursor: default;
+}
+/* end bottom navbar */
+
+/* element to ensure the bottom navbar doesn't cover up anything
+(placed on the last element of a page) */
+.bottom {
+	margin-bottom: 70px;
+}
+  </style>
 </head>
 <body>
 
@@ -35,9 +94,9 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script type="text/javascript" src="stylesheets/js/index.js"></script>
   <script type="text/javascript" src="stylesheets/js/person.js"></script>
   <script type="text/javascript" src="stylesheets/js/event.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
