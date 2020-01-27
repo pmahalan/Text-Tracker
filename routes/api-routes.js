@@ -5,7 +5,7 @@ module.exports = function(app) {
  
   // #1 -- POST route for creating + saving a new user!
   app.post("/api/users", function(req, res) {
-    db.Users.create({
+    function createUser() {db.Users.create({
     //"results" above refers to line 9 in user.js (models).
 
       createdAt: req.body.createdAt,
@@ -21,7 +21,7 @@ module.exports = function(app) {
     })
     .catch(function(err) {
       res.status(401).json(err);
-    });
+    });}
   });
 
   // #2 -- Route for creating + saving a new event!
@@ -58,7 +58,13 @@ module.exports = function(app) {
 
   // #4 -- Route for updating a person.
   app.put("/api/users", function(req, res) {
-    db.Users.update(req.body,
+    function updateUser() {db.Users.update(
+      {first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        cell: req.body.cell,
+        email: req.body.email,
+        role: req.body.role,
+        keyword: req.body.keyword},
     //"results" above refers to line 9 in user.js (models).
       {
         where: {
@@ -67,7 +73,8 @@ module.exports = function(app) {
       })
       .then(function(data) {
         res.json(data);
-      });
+      });}
+      updateUser();
   });
 
   // #5 -- Route for deleting an event. 
@@ -100,8 +107,16 @@ module.exports = function(app) {
   // Must create the webhook route that links to clearstream.io
 
   app.get("/api/webhook", function(req, res) {
-    
+ 
     db.Users.findOne({where: {cell: req.data.subscriber.mobile_number}}).then((data)=>{
+      if(data !== null){
+        updateUser();
+
+      }
+      else{
+        createUser();
+
+      }
       
       res.json(data);
       console.log(data);
@@ -111,7 +126,41 @@ module.exports = function(app) {
   // app.post("/api/webhook", function(req, res){
   //   db.Users.
     
-  // })
+  function updateUser() {db.Users.update(
+      {first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        cell: req.body.cell,
+        email: req.body.email,
+        role: req.body.role,
+        keyword: req.body.keyword},
+   
+      {
+        where: {
+          cell: req.body.cell
+        }
+      })
+      .then(function(data) {
+        res.json(data);
+      });}
+
+      function createUser() {db.Users.create({
+       
+          createdAt: req.body.createdAt,
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          cell: req.body.last_name,
+          email: req.body.email,
+          role: req.body.role,
+          keyword: req.body.keyword
+        })
+        .then(function() {
+        res.status(200).send('New person successfully created!');
+        })
+        .catch(function(err) {
+          res.status(401).json(err);
+        });}
   
 
 };
+
+
