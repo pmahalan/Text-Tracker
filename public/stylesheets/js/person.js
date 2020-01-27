@@ -19,7 +19,7 @@ $(document).ready(function () {
     let personKeyword = $("#keyword").val().trim();
 
     //if needed fields are empty, this will send an error notice:
-    if (personKeyword === "" || personFirst === "") {
+    if (personCell === "" || personFirst === "") {
       //Creates Toast for error messages
       let toastHTML = '<span>The name and keyword fields cannot be empty.</span>';
       return M.toast({ html: toastHTML, displayLength: 2000 });
@@ -33,7 +33,7 @@ $(document).ready(function () {
       cell: personCell,
       email: personEmail,
       role: personRole,
-      keyword: personKeyword
+  
     };
 
     // Stringify personData
@@ -63,7 +63,18 @@ $(document).ready(function () {
             return M.toast({ html: toastHTML, displayLength: 2000 });
         })
     };
+
     
+    let keywordSearch =  {cell: personCell, keyword: personKeyword};
+    
+    function postKeyword(data){
+      $.post("api/keywords", data)
+      .then(function (response){
+      console.log(response);
+      
+      })
+    }
+    postKeyword(keywordSearch);
     // sends ajax post request
     postPerson(createdPerson)
   });
