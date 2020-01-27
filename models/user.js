@@ -13,8 +13,7 @@ var Users = sequelize.define("Users", {
     last_name: Datatypes.STRING,
     cell: Datatypes.BIGINT,
     email: Datatypes.STRING,
-    role: Datatypes.STRING,
-    keyword: Datatypes.STRING
+    role: Datatypes.STRING
 
   });
 

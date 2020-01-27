@@ -63,7 +63,9 @@ Additionally, we were able to successfully deploy our application's server to He
 
 ## Directions for Future Development
 
-  
+Figure out how to utilize an array as a keyword
+(Unless we end up successfully doing it now)  
+
 ## Links
 
 GH pages: <https://pmahalan.github.io/Project_2/>
