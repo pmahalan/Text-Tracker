@@ -1,25 +1,16 @@
-{{!-- Preloader --}}
-<div class="progress">
-  <div class="indeterminate"></div>
-</div>
-
 
 {{!-- Person Info --}}
 <div class="container">
 {{!-- adds a full width card with person's info --}}
-  {{#each person}}
-  <div data-id:{{id}} class="col s12 m7">
-    <h2 class="header">{{first_name}} {{last_name}}</h2>
+  <div data-id:{{person.id}} class="col s12 m7">
+    <h2 class="header">{{person.first_name}} {{person.last_name}}</h2>
     <div class="card horizontal">
       <div class="card-stacked">
         <div class="card-content">
           <ul>
-          <p>Cell number:{{cell}}</p>
-          <p>Email: {{email}}</p>
-          <p>Role: {{role}}</p>
-            {{#each}}
-          <p>Event keyword texted:{{keyword}}</p>
-            {{/each}}
+          <p>Cell number:{{person.cell}}</p>
+          <p>Email: {{person.email}}</p>
+          <p>Role: {{person.role}}</p>
           </ul>
           {{!-- Delete Button --}}
           <a id="deletePerson" class="row right btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
@@ -27,7 +18,6 @@
       </div>
     </div>
   </div>
-  {{/each}}
 
 {{!-- Table of Events that Person has Attended (repeats as neccessary) --}}
   <div class="row">
@@ -43,14 +33,14 @@
       <tbody>
         {{#each event}}
         <tr>
-          <td>{{createdAt}}</td>
-          <td>{{title}}</td>
-          <td>{{location}}</td>
-          <td>{{host}}</td>
+          <td>{{dataValues.createdAt}}</td>
+          <td>{{dataValues.title}}</td>
+          <td>{{dataValues.location}}</td>
+          <td>{{dataValues.host}}</td>
         </tr>
         {{/each}}
       </tbody>
-  </div>
+  </div> 
 
 {{!-- ends container --}}
 </div> 
