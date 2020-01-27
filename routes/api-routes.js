@@ -177,8 +177,6 @@ module.exports = function (app) {
 
           keyword: KW,
           cell: req.data.subscriber.mobile_number
-
-
         })
 
       }
