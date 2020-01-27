@@ -74,16 +74,12 @@ $(document).ready(function () {
 
     // declare id variable
     let id = $(this).data("id");
-
     // create ajax delete req
-    function deletePerson(data) {
-      $.delete("/api/newEvent/" + data)
+      $.delete("/api/newEvent/" + id)
         .then(function (response) {
           console.log(response)
           window.location.replace("/index");
         });
-    };
-
-    deletePerson(id);
+    
   });
 });
