@@ -16,12 +16,12 @@ module.exports = function (app) {
         role: req.body.role
 
       })
-      .then(function () {
-        res.status(200).send('New person successfully created!');
-      })
-      .catch(function (err) {
-        res.status(401).json(err);
-      });
+        .then(function () {
+          res.status(200).send('New person successfully created!');
+        })
+        .catch(function (err) {
+          res.status(401).json(err);
+        });
     }
   });
 
@@ -67,15 +67,16 @@ module.exports = function (app) {
           last_name: req.body.last_name,
           cell: req.body.cell,
           email: req.body.email,
-          role: req.body.role},
-      {
+          role: req.body.role
+        },
+        {
           where: {
             cell: req.body.cell
           }
         })
-      .then(function (data) {
-        res.json(data);
-      });
+        .then(function (data) {
+          res.json(data);
+        });
     }
     updateUser();
   });
@@ -107,7 +108,59 @@ module.exports = function (app) {
       });
   });
 
-//find all users with the entered first and last names
+
+  //find one user by cellphone number
+  app.get("/api/users/cell/:cell", function (req, res) {
+    let personObj = {};
+    let eventArr = [];
+    // First find user by cell
+    db.Users.findOne({
+      where: {
+        cell: req.params.cell
+      }
+    })
+      .then(data => {
+        //defining personObj
+        personObj.first_name = data.first_name;
+        personObj.last_name = data.last_name;
+        personObj.cell = data.cell;
+        personObj.email = data.email;
+        personObj.role = data.role;
+        // makes a call to Keywords to find what keywords a person has used
+        db.Keywords.findAll({
+          where: {
+            cell: data.cell
+          }
+        })
+          .then(data2 => {
+            // maps over an array of answers (from above query)
+            let keyArray = data2.map(item => item.keyword)
+            // For each keyword mapped, this makes a query to find what event it is assocaited with
+            keyArray.forEach(keyWord => {
+              db.Events.findOne({
+                where: {
+                  keyword: keyWord
+                }
+              })
+                .then(data3 => {
+                  // pushes the result into an array of events
+                  eventArr.push(data3)
+                })
+            })
+            // this timeout allows time for the event array to be made
+            setTimeout(function () {
+              //renders the handlebars page 'people'
+              res.render("people", {
+                person: personObj,
+                event: eventArr
+              })
+            }, 500)
+
+          })
+      })
+  });
+
+  //find all users with the entered first and last names
   app.get("/api/users/name/:first_name/:last_name", function (req, res) {
 
     db.Users.findAll({
@@ -128,7 +181,7 @@ module.exports = function (app) {
     })
   });
 
-//find one event by event title
+  //find one event by event title
   app.get("/api/events/name/:title", function (req, res) {
 
     db.Events.findOne({ where: { title: { $like: '%' + req.params.title + '%' } } }).then((data) => {
@@ -175,9 +228,9 @@ module.exports = function (app) {
           cell: req.body.cell
         }
       })
-    .then(function (data) {
-      res.json(data);
-    });
+      .then(function (data) {
+        res.json(data);
+      });
   }
 
   function createUser() {
@@ -191,12 +244,12 @@ module.exports = function (app) {
       role: req.body.role
 
     })
-    .then(function () {
-      res.status(200).send('New person successfully created!');
-    })
-    .catch(function (err) {
-      res.status(401).json(err);
-    });
+      .then(function () {
+        res.status(200).send('New person successfully created!');
+      })
+      .catch(function (err) {
+        res.status(401).json(err);
+      });
   }
 
 
