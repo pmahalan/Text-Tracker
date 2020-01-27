@@ -136,14 +136,18 @@ module.exports = function(app) {
  
    app.get("/api/users/name/:first_name/:last_name", function(req, res) {
    
-     db.Users.findAll({where: {first_name: req.params.last_name, first_name: req.params.last_name}}).then((data)=>{
+     db.Users.findAll({
+       where: {
+              first_name: {$like: '%' + req.body.first_name + '%'},
+              last_name: {$like: '%' + req.body.last_name + '%'}
+  }}).then((data)=>{
        res.json(data);
      })
    });
  
    app.get("/api/events/keyword/:keyword", function(req, res) {
      
-     db.Events.findOne({where: {keyword: req.params.keyword}}).then((data)=>{
+     db.Events.findOne({where: {keyword: {$like: '%' + req.body.keyword + '%'}}}).then((data)=>{
        res.json(data);
      })
    });
@@ -151,7 +155,7 @@ module.exports = function(app) {
  
    app.get("/api/events/title/:title", function(req, res) {
  
-     db.Events.findOne({where: {title: req.params.title}}).then((data)=>{
+     db.Events.findOne({where: {title: {$like: '%' + req.body.title + '%'}}}).then((data)=>{
        res.json(data);
      })
    });

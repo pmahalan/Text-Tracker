@@ -14,7 +14,7 @@ var Users = sequelize.define("Users", {
     cell: Datatypes.BIGINT,
     email: Datatypes.STRING,
     role: Datatypes.STRING,
-    keyword: DataTypes.ARRAY(DataTypes.STRING)
+    keyword: Datatypes.STRING
 
   });
 
