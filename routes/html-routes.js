@@ -12,7 +12,8 @@ module.exports = function(app) {
   });
 
   app.get("/api/users/cell/:cell", function(req, res) {
-    
+      console.log(req.params.cell);
+      
     db.Users.findOne({where: {cell: req.params.cell}}).then((data)=>{
       res.json(data);
     })
@@ -38,7 +39,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/events/keyword/:keyword", function(req, res) {
-   
+    
     db.Events.findOne({where: {keyword: req.params.keyword}}).then((data)=>{
       res.json(data);
     })
