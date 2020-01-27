@@ -25,7 +25,9 @@ CREATE TABLE `people` (
   PRIMARY KEY (`id`)
 ) 
 
-INSERT INTO `people` VALUES ('1','1999-12-22 22:28:10','Lupe','Mayert','374501','cronin.kade@example.net','Ms.','Ltd'),
+INSERT INTO users (id, createdAt, first_name, last_name, cell, email, role, keyword)
+
+VALUES ('1','1999-12-22 22:28:10','Lupe','Mayert','374501','cronin.kade@example.net','Ms.','Ltd'),
 ('2','1992-08-31 13:31:24','Alfredo','Zboncak','721','hodkiewicz.arne@example.com','Dr.','Group'),
 ('3','2004-02-03 10:10:35','Elenor','Smitham','916','hahn.gerda@example.net','Ms.','Group'),
 ('4','1993-04-30 11:16:09','Iliana','Miller','0','rsteuber@example.com','Mrs.','Group'),
