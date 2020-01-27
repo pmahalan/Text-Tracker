@@ -31,9 +31,9 @@ module.exports = function(app) {
 
   });
 
-  app.get("/api/users/name/:last_name", function(req, res) {
+  app.get("/api/users/name/:first_name/:last_name", function(req, res) {
   
-    db.Users.findOne({where: {last_name: req.params.last_name}}).then((data)=>{
+    db.Users.findAll({where: {first_name: req.params.last_name, first_name: req.params.last_name}}).then((data)=>{
       res.json(data);
     })
   });

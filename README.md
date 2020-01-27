@@ -40,6 +40,13 @@ Database workbench:
 
 Getting the server-side of our application to work in conjuction with the front-end was a challenge. Establishing API routes and HTML routes took repeated effort and revision in order to achieve working code.
 
+It was a little difficult to associate users to events, and to get the routes to return both users and events with matching keywords.
+
+Additionally, we had some challenges with the database. At first, getting good dummy data that would properly feed into our tables and fit our
+criteria was an obstacle. 
+
+Another problem we faced with the database was an error we had because we had created the tables manually, and it was conflicting with Sequelize as it tried to create the tables via the models. 
+
 #### Successes
 
 Through persistant trial and error, we were able to successfully (1) get the user-end webpages to work, (2) get the server-side databases and routes to work, and (3) get the user-end and server-side to work in conjunction with each-other. 

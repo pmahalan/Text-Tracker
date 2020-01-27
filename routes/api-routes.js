@@ -97,7 +97,21 @@ module.exports = function(app) {
       });
     });
 
-  // #7 -- Route for searching for a person (app.get) then rendering result (res.render).
+  // Must create the webhook route that links to clearstream.io
+
+  app.get("/api/webhook", function(req, res) {
+    
+    db.Users.findOne({where: {cell: req.data.subscriber.mobile_number}}).then((data)=>{
+      
+      res.json(data);
+      console.log(data);
+    })
+  });
+
+  // app.post("/api/webhook", function(req, res){
+  //   db.Users.
+    
+  // })
   
 
 };
