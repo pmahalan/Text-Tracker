@@ -49,9 +49,9 @@ Additionally, we were able to successfully deploy our application's server to He
 
 ## Demo
 
-![App Screenshot](1.jpg "Picture of Website")
-![App Screenshot](2.jpg "Picture of Website")
-![App Screenshot](3.jpg "Picture of Website")
+![App Screenshot](/assets/1.jpg "Picture of Website")
+![App Screenshot](/assets/2.jpg "Picture of Website")
+![App Screenshot](/assets/3.jpg "Picture of Website")
 
 
 ## Directions for Future Development
