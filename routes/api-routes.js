@@ -5,44 +5,112 @@ module.exports = function (app) {
 
   // #1 -- POST route for creating + saving a new user!
   app.post("/api/users", function (req, res) {
-    function createUser() {
-      db.Users.create({
+   var ppl = newPerson(req);
+   
+    // function createUser() {
+    //   db.Users.create({
 
-        createdAt: req.body.createdAt,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        cell: req.body.last_name,
-        email: req.body.email,
-        role: req.body.role
+    //     createdAt: req.body.createdAt,
+    //     first_name: req.body.first_name,
+    //     last_name: req.body.last_name,
+    //     cell: req.body.cell,
+    //     email: req.body.email,
+    //     role: req.body.role
 
-      })
-        .then(function () {
-          res.status(200).send('New person successfully created!');
-        })
-        .catch(function (err) {
-          res.status(401).json(err);
-        });
-    }
+    //   })
+    //   .then(function () {
+    //     res.status(200).send('New person successfully created!');
+    //   })
+    //   .catch(function (err) {
+    //     res.status(401).json(err);
+    //   });
+    // }
   });
+  async function newPerson(req){
+    var ppl = await db.Users.create({
+
+      
+      createdAt: req.body.createdAt,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      cell: req.body.cell,
+      email: req.body.email,
+      role: req.body.role
+
+    })
+    return ppl;
+  }
+
+//create new keyword
+  app.post("/api/keywords", function (req, res) {
+
+    var key = newKeyword(req);
+    
+      // var key = await db.Keywords.create({
+
+      //   keyword: req.body.keyword,
+      //   cell: req.body.cell
+  
+      // })
+ 
+      // .then(function () {
+     
+      //   res.status(200).send('New keyword successfully created!');
+      // })
+      // .catch(function (err) {
+      //   res.status(401).json(err);
+      // }); console.log(key.toJSON());
+    })
+
+    async function newKeyword(req){
+      var key = await db.Keywords.create({
+
+        keywordTwo: req.body.keyword,
+        cell: req.body.cell
+  
+      })
+
+      return key;
+
+    }
+
 
   // #2 -- Route for creating + saving a new event!
   app.post("/api/newEvent", function (req, res) {
-    db.Events.create({
-      //"Events" above refers to line 9 in events.js (models).
 
-      title: req.body.title,
-      location: req.body.location,
-      host: req.body.host,
-      keyword: req.body.keyword
+    console.log(req.body);
+   
+   var eve = newEvent(req);
+    // db.Events.create({
+    //   //"Events" above refers to line 9 in events.js (models).
+
+    //   title: req.body.title,
+    //   location: req.body.location,
+    //   host: req.body.host,
+    //   keyword: req.body.keyword
+
+    // })
+    //   .then(function () {
+    //     res.status(200).send('New event successfully created!');
+    //   })
+    //   .catch(function (err) {
+    //     res.status(401).json(err);
+    //   });
+  });
+
+  async function newEvent(req){
+    var eve = await db.Events.create({
+
+    title: req.body.title,
+   location: req.body.location,
+   host: req.body.host,
+  keyword: req.body.keyword
 
     })
-      .then(function () {
-        res.status(200).send('New event successfully created!');
-      })
-      .catch(function (err) {
-        res.status(401).json(err);
-      });
-  });
+    return eve;
+  }
+
+
 
 
   // #3 -- Route for deleting a person by unique id

@@ -55,7 +55,7 @@ $(document).ready(function () {
         })
     }
     // sends ajax post request
-    postEvent(createdEvent)
+    postEvent(eventData)
   });
 
 });
