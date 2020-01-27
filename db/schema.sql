@@ -23,3 +23,7 @@ CREATE TABLE events (
     host VARCHAR(60),
     keyword VARCHAR(80) NOT NULL
 );
+
+CREATE TABLE keywords (
+keyword VARCHAR(100)
+);
