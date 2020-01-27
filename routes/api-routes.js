@@ -45,20 +45,6 @@ module.exports = function (app) {
       });
   });
 
-  app.get('/users', function (req, res, next) {
-
-    db.Users.findAll({}).then((data) => {
-      res.json(data);
-    })
-  });
-
-
-  app.get('/events', function (req, res, next) {
-
-    db.Events.findAll({}).then((data) => {
-      res.json(data);
-    })
-  })
 
   // #3 -- Route for deleting a person.
   app.delete("/api/users/:id", function (req, res) {
@@ -143,8 +129,8 @@ module.exports = function (app) {
 
     db.Users.findAll({
       where: {
-        first_name: { $like: '%' + req.body.first_name + '%' },
-        last_name: { $like: '%' + req.body.last_name + '%' }
+        first_name: { $like: '%' + req.params.first_name + '%' },
+        last_name: { $like: '%' + req.params.last_name + '%' }
       }
     }).then((data) => {
       res.json(data);
@@ -153,15 +139,15 @@ module.exports = function (app) {
 
   app.get("/api/events/keyword/:keyword", function (req, res) {
 
-    db.Events.findOne({ where: { keyword: { $like: '%' + req.body.keyword + '%' } } }).then((data) => {
+    db.Events.findOne({ where: { keyword: { $like: '%' + req.params.keyword + '%' } } }).then((data) => {
       res.json(data);
     })
   });
 
 
-  app.get("/api/events/title/:title", function (req, res) {
+  app.get("/api/events/name/:title", function (req, res) {
 
-    db.Events.findOne({ where: { title: { $like: '%' + req.body.title + '%' } } }).then((data) => {
+    db.Events.findOne({ where: { title: { $like: '%' + req.params.title + '%' } } }).then((data) => {
       res.json(data);
     })
   });
