@@ -164,11 +164,7 @@ $(document).ready(function () {
 
     // creates Ajax get request
     function getCell(data) {
-      $.get("/api/users/cell/" + data) 
-        .then(function (response) {
-          console.log(response);
-          // If there's an error, handle it by throwing up an alert
-        })
+      window.location.href = "/api/users/cell/" + data
     }
 
     // sends ajax request
