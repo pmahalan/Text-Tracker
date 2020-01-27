@@ -32,7 +32,7 @@ $(document).ready(function () {
       last_name: personLast,
       cell: personCell,
       email: personEmail,
-      role: personRole,
+      role: personRole
   
     };
 
@@ -41,8 +41,8 @@ $(document).ready(function () {
     console.log(createdPerson);
 
     // makes Ajax post request
-    function postPerson(data) {
-      $.post("/api/users", data)
+ 
+      $.post("/api/users", personData)
         .then(function (response) {
           console.log(response);
           // Success message
@@ -62,21 +62,19 @@ $(document).ready(function () {
             let toastHTML = `<span><i class="material-icons">error</i> ${err} </span>`;
             return M.toast({ html: toastHTML, displayLength: 2000 });
         })
-    };
+    
 
     
     let keywordSearch =  {cell: personCell, keyword: personKeyword};
     
-    function postKeyword(data){
-      $.post("api/keywords", data)
+   
+      $.post("api/keywords", keywordSearch)
       .then(function (response){
       console.log(response);
       
       })
-    }
-    postKeyword(keywordSearch);
-    // sends ajax post request
-    postPerson(createdPerson)
+      window.location.href = "/";
+   
   });
 
   // Delete Person on click
@@ -94,3 +92,42 @@ $(document).ready(function () {
     
   });
 });
+
+
+// function postPerson(data) {
+//   $.post("/api/users", data)
+//     .then(function (response) {
+//       console.log(response);
+//       // Success message
+//       let toastHTML = `<span><i class="material-icons">thumb_up</i> Success! </span>`;
+//       M.toast({ html: toastHTML, displayLength: 2000 });
+//     })
+//     .then(() => {
+//       //set Timeout
+//       setTimeout( () => {
+//       //reload the window
+//       window.location.replace("/newPerson");
+//       }, 800);
+//     })
+//     .catch((err) => {
+//       // If there's an error, handle it by throwing up an alert
+//       console.log(err)
+//         let toastHTML = `<span><i class="material-icons">error</i> ${err} </span>`;
+//         return M.toast({ html: toastHTML, displayLength: 2000 });
+//     })
+// };
+
+
+// let keywordSearch =  {cell: personCell, keyword: personKeyword};
+
+// function postKeyword(data){
+//   $.post("api/keywords", data)
+//   .then(function (response){
+//   console.log(response);
+  
+//   })
+// }
+// postKeyword(keywordSearch);
+// // sends ajax post request
+// postPerson(createdPerson)
+// });
