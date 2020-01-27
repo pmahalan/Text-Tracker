@@ -5,17 +5,12 @@ var sequelize = require("sequelize");
 
 
 module.exports = function(app) {
-  
+  //html route to index on homeslice
   app.get('/', function (req, res, next) {
-    //call to model (query)
     res.render('index');
   });
 
-  app.get('/people', function (req, res, next) {
-    //call to model (query)
-    res.render('people');
-  });
-
+  //get to find one user by cellphone number
   app.get("/api/users/cell/:cell", function(req, res) {
       // console.log(req.params.cell);
      
@@ -108,20 +103,17 @@ module.exports = function(app) {
 
   });
 
-
+//html route to the page to create a new user
   app.get('/newPerson', function (req, res, next) {
-    
-    
+     
     res.render('newPerson');
   });
 
-
-
+//html route to page with form for creating new event
   app.get('/newEvent', function (req, res, next) {
  
     res.render('newEvent');
   });
-
 
 }
 

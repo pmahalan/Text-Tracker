@@ -1,4 +1,4 @@
-# Make Me Laugh!
+# Text Tracker
 
 ## Elevator Pitch
 
@@ -63,8 +63,15 @@ Additionally, we were able to successfully deploy our application's server to He
 
 ## Directions for Future Development
 
-Figure out how to utilize an array as a keyword
-(Unless we end up successfully doing it now)  
+Store keywords as an array by user in a more organized fashion through the use of MongoDB.
+
+Avoid the use of the third 'keywords' table for association.
+
+Create an option for both users and event hosts to have profile pages that provide photos/descriptions
+of their events/interests/goals. This page could also offer a calendar function for users to see dates and times
+of future events on a host's profile page. 
+
+Offer a mutuals option where you can view profiles of other users who have attended the same events as you. 
 
 ## Links
 
