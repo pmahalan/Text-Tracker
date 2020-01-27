@@ -20,7 +20,7 @@ $(document).ready(function () {
     };
 
     let eventData = {
-      name: eventName,
+      title: eventName,
       location: eventLocation,
       host: eventHost,
       keyword: eventKeyword

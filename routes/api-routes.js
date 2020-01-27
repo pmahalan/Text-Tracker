@@ -7,7 +7,6 @@ module.exports = function (app) {
   app.post("/api/users", function (req, res) {
     function createUser() {
       db.Users.create({
-        //"results" above refers to line 9 in user.js (models).
 
         createdAt: req.body.createdAt,
         first_name: req.body.first_name,
@@ -46,7 +45,7 @@ module.exports = function (app) {
   });
 
 
-  // #3 -- Route for deleting a person.
+  // #3 -- Route for deleting a person by unique id
   app.delete("/api/users/:id", function (req, res) {
     db.Users.destroy({
 
@@ -69,8 +68,6 @@ module.exports = function (app) {
           cell: req.body.cell,
           email: req.body.email,
           role: req.body.role},
-        
-    
       {
           where: {
             cell: req.body.cell
@@ -82,8 +79,6 @@ module.exports = function (app) {
     }
     updateUser();
   });
-
-
 
   // #5 -- Route for deleting an event. 
   app.delete("/api/newEvent/:id", function (req, res) {
@@ -112,19 +107,7 @@ module.exports = function (app) {
       });
   });
 
-  //building join get to return both users and events with matching keywords
-  // app.get("/api/users/keyword/:keyword", function(req, res) {
-  //   db.Events.hasMany(db.Users, {foreignKey:'keyword'})
-  //   db.Users.belongsTo(db.Events,{foreignKey:'keyword'})
-  //   db.Users.findAll({where: {keyword:req.params.keyword},include:[{model:db.Events,
-  //     on:{col1:sequelize.where(sequelize.col("Users.keyword"),"=",sequelize.col("Events.keyword"))}
-  //    }]
-  //  }).then((data)=>{
-  //    res.json(data);
-  //  })
-
-  //  });
-
+//find all users with the entered first and last names
   app.get("/api/users/name/:first_name/:last_name", function (req, res) {
 
     db.Users.findAll({
@@ -137,6 +120,7 @@ module.exports = function (app) {
     })
   });
 
+  //find one event by unique keyword
   app.get("/api/events/keyword/:keyword", function (req, res) {
 
     db.Events.findOne({ where: { keyword: { $like: '%' + req.params.keyword + '%' } } }).then((data) => {
@@ -144,7 +128,7 @@ module.exports = function (app) {
     })
   });
 
-
+//find one event by event title
   app.get("/api/events/name/:title", function (req, res) {
 
     db.Events.findOne({ where: { title: { $like: '%' + req.params.title + '%' } } }).then((data) => {
@@ -153,7 +137,7 @@ module.exports = function (app) {
   });
 
 
-  // Must create the webhook route that links to clearstream.io
+  // the webhook route that links to clearstream.io and checks if the user already exists in our database
 
   app.get("/api/webhook", function (req, res) {
     var KW = req.data.keyword.name;
@@ -175,8 +159,6 @@ module.exports = function (app) {
       console.log(data);
     })
   });
-
-
 
   function updateUser() {
     db.Users.update(
