@@ -1,6 +1,7 @@
 // Requiring our models 
 var db = require("../models");
 
+var sequelize = require("sequelize");
 module.exports = function (app) {
 
   // #1 -- POST route for creating + saving a new user!
@@ -229,17 +230,19 @@ module.exports = function (app) {
   });
 
   //find all users with the entered first and last names
-  app.get("/api/users/name/:first_name/:last_name", function (req, res) {
-
+  app.get("/api/users/name", function (req, res) {
+  
     db.Users.findAll({
       where: {
-        first_name: { $like: '%' + req.params.first_name + '%' },
-        last_name: { $like: '%' + req.params.last_name + '%' }
+        first_name: { [sequelize.Op.like]: '%' + req.params.first_name + '%' },
+        last_name: {[sequelize.Op.like]: '%' + req.params.last_name + '%' }
       }
     }).then((data) => {
+      console.log(data);
       res.json(data);
     })
-  });
+  })
+
 
   //find one event by unique keyword
   app.get("/api/events/keyword/:keyword", function (req, res) {
@@ -266,7 +269,7 @@ module.exports = function (app) {
       if (data !== null) {
         db.Keywords.create({
 
-          keyword: KW,
+          keywordTwo: KW,
           cell: req.data.subscriber.mobile_number
         })
 
