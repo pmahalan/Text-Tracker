@@ -9,7 +9,7 @@
   <script src="https://kit.fontawesome.com/83f190f6d5.js" crossorigin="anonymous"></script>
   {{!-- <link href="stylesheets/css/style.css" type="text/css" rel="stylesheet"> --}}
   <style>
-    form.signup,
+form.signup,
 form.login {
   margin-top: 50px;
 }
@@ -61,8 +61,7 @@ h1 {
 }
 /* end bottom navbar */
 
-/* element to ensure the bottom navbar doesn't cover up anything
-(placed on the last element of a page) */
+/* element to ensure the bottom navbar doesn't cover up anything */
 .bottom {
 	margin-bottom: 70px;
 }
@@ -89,11 +88,24 @@ h1 {
 		</div>
   </div>
   
-
-  <script
+<script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+	<script> // Delete Person on click
+
+  $("#deletePerson").on("click", function (event) {
+    event.preventDefault();
+    console.log("clicked")
+		let cell = {{person.cell}};
+		$.ajax({
+			method: "DELETE",
+			URL: "/api/users/" + cell
+		}).then( (data) => {
+    window.location.replace("/api/users/" + cell);
+    });
+
+  });</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script type="text/javascript" src="stylesheets/js/index.js"></script>
   <script type="text/javascript" src="stylesheets/js/person.js"></script>

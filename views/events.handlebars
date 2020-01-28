@@ -2,9 +2,17 @@
 <div class="container">
   <div class="divider"></div>
   <div class="section">
-    {{!-- dynamically insert the date/event that was searched for --}}
-    <h5>{{event.title}}</h5>
-    <p>Mobile Keyword: {{event.keyword}}</p>
+    <div class="col s 12 m7">
+      {{!-- dynamically insert the date/event that was searched for --}}
+      <h2 class="header">{{event.title}}</h2>
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>Mobile Keyword: {{event.keyword}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   {{!-- Insert button to save as csv --}}
 
