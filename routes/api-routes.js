@@ -239,8 +239,6 @@ module.exports = function (app) {
     // finds user by username
     db.Users.findOne({
       where: {
-        // first_name: { $like: '%' + req.params.first_name + '%' },
-        // last_name: { $like: '%' + req.params.last_name + '%' }
         first_name: {
           [Op.like]: req.params.first_name
         },
