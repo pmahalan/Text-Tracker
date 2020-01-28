@@ -77,20 +77,23 @@ $(document).ready(function () {
    
   });
 
-  // Delete Person on click
+  // // Delete Person on click
 
-  $("#deletePerson").on("click", function (event) {
-
-    // declare id variable
-    let id = $(this).data("id");
-    // create ajax delete req
-      $.delete("/api/newEvent/" + id)
-        .then(function (response) {
-          console.log(response)
-          window.location.replace("/index");
-        });
+  // $("#deletePerson").on("click", function (event) {
+  //   event.preventDefault();
+  //   console.log("clicked")
+  //   // declare id variable
+  //   let id = $(this).data("id").val();
+  //   console.log(id);
+  //   window.location.replace("/index");
+  //   // create ajax delete req
+  //     // $.delete("/api/newEvent/" + id)
+  //     //   .then(function (response) {
+  //     //     console.log(response)
+  //     //     window.location.replace("/index");
+  //     //   });
     
-  });
+  // });
 });
 
 

@@ -2,22 +2,20 @@
 {{!-- Person Info --}}
 <div class="container">
 {{!-- adds a full width card with person's info --}}
-  <div data-id:{{person.id}} class="col s12 m7">
+  <section data-id:"{{person.id}}" class="col s12 m7">
     <h2 class="header">{{person.first_name}} {{person.last_name}}</h2>
     <div class="card horizontal">
       <div class="card-stacked">
-        <div class="card-content">
-          <ul>
+        <div class="card-content">        
           <p>Cell number: {{person.cell}}</p>
           <p>Email: {{person.email}}</p>
           <p>Role: {{person.role}}</p>
-          </ul>
           {{!-- Delete Button --}}
-          <a id="deletePerson" class="row right btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
+          <a id="deletePerson" class="right btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
 {{!-- Table of Events that Person has Attended (repeats as neccessary) --}}
   <div class="row">
