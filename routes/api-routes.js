@@ -66,7 +66,7 @@ module.exports = function (app) {
   async function newKeyword(req) {
     var key = await db.Keywords.create({
 
-      keywordTwo: req.body.keyword,
+      keyword: req.body.keyword,
       cell: req.body.cell
 
     })
