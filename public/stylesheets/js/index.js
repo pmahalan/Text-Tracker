@@ -60,23 +60,8 @@ $(document).ready(function () {
         let toastHTML = '<span>The search field cannot be empty.</span>';
         return M.toast({ html: toastHTML, displayLength: 2000 });
       };
-
-      console.log(searchText);
-
-    // creates Ajax get request
-    function getEventName(data) {
-      $.get("/api/events/name/" + data) 
-        .then(function (response) {
-          console.log(response);
-          // If there's an error, handle it by throwing up an alert
-          if (err) {
-            let toastHTML = `<span><i class="material-icons">error</i>${err}</span>`;
-            return M.toast({ html: toastHTML, displayLength: 2000 });
-          }
-        });
-    };
-    // sends ajax request
-    getEventName(searchText);
+    
+      window.location.href = ("/api/events/name/" + searchText);
   };
 
 
@@ -93,18 +78,7 @@ $(document).ready(function () {
         return M.toast({ html: toastHTML, displayLength: 2000 });
       };
 
-      console.log(searchText);
-
-    // creates Ajax get request
-    function getEventKey(data) {
-      $.get("/api/events/keyword/" + data) 
-        .then(function (response) {
-          console.log(response);
-          // If there's an error, handle it by throwing up an alert
-        })
-    }
-    // sends ajax request
-    getEventKey(searchText);
+      window.location.href = ("/api/events/keyword/" + searchText);
   };
 
 
@@ -131,19 +105,7 @@ $(document).ready(function () {
     let firstName = searchText[0];
     let lastName = searchText[1];
 
-    console.log(firstName, lastName);
-
-    // makes Ajax post request
-    function getPersonName(name1, name2) {
-      window.location.href = ("/api/users/name/" + name1 + "/" + name2)
-      // $.get("/api/users/name/" + name1 + "/" + name2)
-      //   .then(function (data) {
-      //     console.log(data);
-      //     // If there's an error, handle it by throwing up an alert
-      //   })
-    }
-    // sends ajax post request
-    getPersonName(firstName, lastName);
+    window.location.href = ("/api/users/name/" + firstName + "/" + lastName);
   };
 
 
@@ -163,12 +125,6 @@ $(document).ready(function () {
     //Cleans search text to be numbers only
     let cleanedText = searchText.replace(/\D+/g, '');
 
-    // creates Ajax get request
-    function getCell(data) {
-      window.location.href = "/api/users/cell/" + data
-    }
-
-    // sends ajax request
-    getCell(cleanedText);
+    window.location.href = ("/api/users/cell/" + cleanedText);
   };
 });

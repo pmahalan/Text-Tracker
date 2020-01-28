@@ -1,12 +1,10 @@
-
 {{!-- Divider with date --}}
-<div class="divider"></div>
+<div class="container">
+  <div class="divider"></div>
   <div class="section">
     {{!-- dynamically insert the date/event that was searched for --}}
-    {{#each event}}
-    <h5>{{createdAt}}</h5>
-    <p>{{title}}</p>
-    {{/each}}
+    <h5>{{event.title}}</h5>
+    <p>Mobile Keyword: {{event.keyword}}</p>
   </div>
   {{!-- Insert button to save as csv --}}
 
@@ -22,10 +20,11 @@
       <tbody>
         {{#each person}}
         <tr>
-          <td>{{first_name}} {{last_name}}</td>
-          <td>{{email}}</td>
-          <td>{{cell}}</td>
+          <td>{{dataValues.first_name}} {{dataValues.last_name}}</td>
+          <td>{{dataValues.email}}</td>
+          <td>{{dataValues.cell}}</td>
         </tr>
         {{/each}}
       </tbody>
   </div>
+</div>
