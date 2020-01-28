@@ -135,11 +135,12 @@ $(document).ready(function () {
 
     // makes Ajax post request
     function getPersonName(name1, name2) {
-      $.post("/api/users/name/" + name1 + "/" + name2)
-        .then(function (data) {
-          console.log(data);
-          // If there's an error, handle it by throwing up an alert
-        })
+      window.location.href = ("/api/users/name/" + name1 + "/" + name2)
+      // $.get("/api/users/name/" + name1 + "/" + name2)
+      //   .then(function (data) {
+      //     console.log(data);
+      //     // If there's an error, handle it by throwing up an alert
+      //   })
     }
     // sends ajax post request
     getPersonName(firstName, lastName);
