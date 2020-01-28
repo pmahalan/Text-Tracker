@@ -2,6 +2,7 @@
 var db = require("../models");
 const { Op } = require("sequelize");
 
+var sequelize = require("sequelize");
 module.exports = function (app) {
 
   // #1 -- POST route for creating + saving a new user!
@@ -316,7 +317,7 @@ module.exports = function (app) {
       if (data !== null) {
         db.Keywords.create({
 
-          keyword: KW,
+          keywordTwo: KW,
           cell: req.data.subscriber.mobile_number
         })
 
