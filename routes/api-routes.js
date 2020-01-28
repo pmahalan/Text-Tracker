@@ -457,67 +457,84 @@ module.exports = function (app) {
   // the webhook route that links to clearstream.io and checks if the user already exists in our database
 
   app.get("/api/webhook", function (req, res) {
-    var KW = req.data.keyword.name;
+    console.log(req);
+   
     db.Users.findOne({ where: { cell: req.data.subscriber.mobile_number } }).then((data) => {
+      
+      
       if (data !== null) {
-        db.Keywords.create({
+       var webKey = webKeyCreate(req);
+        // db.Keywords.create({
 
-          keyword: KW,
-          cell: req.data.subscriber.mobile_number
-        })
+        //   keyword: KW,
+        //   cell: req.data.subscriber.mobile_number
+        // })
       }
       else {
-        createUser();
-        db.Keywords.create({
-
-          keyword: KW,
-          cell: req.data.subscriber.mobile_number
-        })
+        var morePpl = newPerson(req);
+       
       }
-
-      res.json(data);
-      console.log(data);
+      
+      // res.json(data);
+      // console.log(data);
     })
   });
 
-  function updateUsers() {
-    db.Users.update(
-      {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        cell: req.body.cell,
-        email: req.body.email,
-        role: req.body.role
-      },
+  async function webKeyCreate(req) {
+    var webKey = await db.Keywords.create({
 
-      {
-        where: {
-          cell: req.body.cell
-        }
-      })
-      .then(function (data) {
-        res.json(data);
-      });
-  }
-
-  function createUser() {
-    db.Users.create({
-
-      createdAt: req.body.createdAt,
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      cell: req.body.last_name,
-      email: req.body.email,
-      role: req.body.role
+      keyword: req.data.keyword.name,
+      cell: req.data.subscriber.mobile_number
 
     })
-      .then(function () {
-        res.status(200).send('New person successfully created!');
-      })
-      .catch(function (err) {
-        res.status(401).json(err);
-      });
+    return webKey;
   }
+
+  
+  
+  
+  
+  
+  
+  
+  // function updateUsers() {
+  //   db.Users.update(
+  //     {
+  //       first_name: req.body.first_name,
+  //       last_name: req.body.last_name,
+  //       cell: req.body.cell,
+  //       email: req.body.email,
+  //       role: req.body.role
+  //     },
+
+  //     {
+  //       where: {
+  //         cell: req.body.cell
+  //       }
+  //     })
+  //     .then(function (data) {
+  //       res.json(data);
+  //     });
+  // }
+
+  // function createUser() {
+  //   db.Users.create({
+
+  //     createdAt: req.body.createdAt,
+  //     first_name: req.body.first_name,
+  //     last_name: req.body.last_name,
+  //     cell: req.body.last_name,
+  //     email: req.body.email,
+  //     role: req.body.role
+
+  //   })
+  //     .then(function () {
+  //       res.status(200).send('New person successfully created!');
+  //     })
+  //     .catch(function (err) {
+  //       res.status(401).json(err);
+  //     });
+  // }
 
 
 };
