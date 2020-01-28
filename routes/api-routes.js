@@ -117,66 +117,125 @@ module.exports = function (app) {
 
   // #3 -- Route for deleting a person by unique id
   app.delete("/api/users/:id", function (req, res) {
-    db.Users.destroy({
+   var delPpl =  deletePpl(req);
+   
+    // db.Users.destroy({
+
+    //   where: {
+    //     id: req.params.id
+    //   }
+    // })
+    //   .then(function (data) {
+    //     res.json(data);
+    //   });
+  });
+
+  
+  async function deletePpl(req){
+    var delPpl = await db.Users.destroy({
 
       where: {
         id: req.params.id
       }
     })
-      .then(function (data) {
-        res.json(data);
-      });
-  });
+    return delPpl;
+  }
+
+
 
   // #4 -- Route for updating a person.
   app.put("/api/users", function (req, res) {
-    function updateUser() {
-      db.Users.update(
-        {
-          first_name: req.body.first_name,
-          last_name: req.body.last_name,
-          cell: req.body.cell,
-          email: req.body.email,
-          role: req.body.role
-        },
-        {
-          where: {
-            cell: req.body.cell
-          }
-        })
-        .then(function (data) {
-          res.json(data);
-        });
-    }
-    updateUser();
+    var upUser = updateUser(req);
+    //  db.Users.update(
+    //     {
+    //       first_name: req.body.first_name,
+    //       last_name: req.body.last_name,
+    //       cell: req.body.cell,
+    //       email: req.body.email,
+    //       role: req.body.role
+    //     },
+    //     {
+    //       where: {
+    //         cell: req.body.cell
+    //       }
+    //     })
+    //     .then(function (data) {
+    //       res.json(data);
+    //     });
+    
   });
+
+  async function updateUser(req){
+    var upUser = await db.Users.update({
+      
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        cell: req.body.cell,
+        email: req.body.email,
+        role: req.body.role
+      },
+      {
+        where: {
+          cell: req.body.cell
+        }  
+    })
+    return upUser;
+  }
 
   // #5 -- Route for deleting an event. 
   app.delete("/api/newEvent/:id", function (req, res) {
-    db.Events.destroy({
-      //"Events" above refers to line 9 in events.js (models).
+    
+    var del = deleteEvent(req);
+    // db.Events.destroy({
+    //   //"Events" above refers to line 9 in events.js (models).
+    //   where: {
+    //     id: req.params.id
+    //   }
+    // })
+    //   .then(function (data) {
+    //     res.json(data);
+    //   });
+  });
+
+  async function deleteEvent(req){
+    var del = await db.Events.destroy({
+
       where: {
         id: req.params.id
       }
     })
-      .then(function (data) {
-        res.json(data);
-      });
-  });
+    return del;
+  }
+
 
   // #6 -- Route for updating an event. 
   app.put("/api/newEvent", function (req, res) {
-    db.Events.update(req.body,
-      //"Events" above refers to line 9 in events.js (models).
-      {
-        where: {
-          keyword: req.body.keyword
-        }
-      })
-      .then(function (data) {
-        res.json(data);
-      });
+    var upevent = updateEvent(req);
+    // db.Events.update(req.body,
+    //   //"Events" above refers to line 9 in events.js (models).
+    //   {
+    //     where: {
+    //       keyword: req.body.keyword
+    //     }
+    //   })
+    //   .then(function (data) {
+    //     res.json(data);
+    //   });
   });
+
+  async function updateEvent(req){
+    var upevent = await db.Events.update({
+      title: req.body.title,
+   location: req.body.location,
+   host: req.body.host,
+  keyword: req.body.keyword},
+
+      {where: {
+              keyword: req.body.keyword
+            }
+    })
+    return upevent;
+  }
 
 
   //find one user by cellphone number
@@ -330,7 +389,7 @@ module.exports = function (app) {
     })
   });
 
-  function updateUser() {
+  function updateUsers() {
     db.Users.update(
       {
         first_name: req.body.first_name,
