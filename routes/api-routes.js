@@ -456,7 +456,7 @@ module.exports = function (app) {
 
   // the webhook route that links to clearstream.io and checks if the user already exists in our database
 
-  app.get("/api/webhook", function (req, res) {
+  app.post("/api/webhook", function (req, res) {
     console.log(req);
    
     db.Users.findOne({ where: { cell: req.data.subscriber.mobile_number } }).then((data) => {
