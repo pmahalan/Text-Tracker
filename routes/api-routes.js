@@ -111,11 +111,8 @@ module.exports = function (app) {
     return eve;
   }
 
-
-
-
   // #3 -- Route for deleting a person by unique id
-  app.delete("/api/users/:cell", function (req, res) {
+  app.delete("/api/users/name/:first_name/:last_name", function (req, res) {
    var delPpl =  deletePpl(req);
    
     // db.Users.destroy({
@@ -134,7 +131,8 @@ module.exports = function (app) {
     var delPpl = await db.Users.destroy({
 
       where: {
-        cell: req.params.cell
+        first_name: req.params.first_name,
+        last_name: req.params.last_name
       }
     })
     return delPpl;
