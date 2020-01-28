@@ -2,7 +2,6 @@
 var db = require("../models");
 const { Op } = require("sequelize");
 
-var sequelize = require("sequelize");
 module.exports = function (app) {
 
   // #1 -- POST route for creating + saving a new user!
@@ -287,11 +286,59 @@ module.exports = function (app) {
 
           })
       })
-
   });
 
   //find one event by unique keyword
   app.get("/api/events/keyword/:keyword", function (req, res) {
+
+    let eventObj = {};
+    let personArr = [];
+    // First find user by cell
+    db.Events.findOne({
+      where: { 
+        keyword: {
+          [Op.like]: req.params.keyword
+        }
+      }
+    })
+      .then(data => {
+        //defining eventObj
+        eventObj.title = data.title;
+        eventObj.location = data.location;
+        eventObj.host = data.host;
+        eventObj.keyword = data.keyword;
+        // makes a call to Keywords to find what keywords a event has used
+        db.Keywords.findAll({
+          where: {
+            keyword: data.keyword
+          }
+        })
+          .then(data2 => {
+            // maps over an array of answers (from above query)
+            let cellArray = data2.map(item => item.cell)
+            // For each cell mapped, this makes a query to find what event it is assocaited with
+            cellArray.forEach(cellNumber => {
+              db.Users.findOne({
+                where: {
+                  cell: cellNumber
+                }
+              })
+                .then(data3 => {
+                  // pushes the result into an array of events
+                  personArr.push(data3)
+                })
+            })
+            // this timeout allows time for the event array to be made
+            setTimeout(function () {
+              //renders the handlebars page 'people'
+              res.render("events", {
+                event: eventObj,
+                person: personArr
+              })
+            }, 500)
+
+          })
+      })
 
     db.Events.findOne({ where: { keyword: { $like: '%' + req.params.keyword + '%' } } }).then((data) => {
       res.json(data);
@@ -301,9 +348,56 @@ module.exports = function (app) {
   //find one event by event title
   app.get("/api/events/name/:title", function (req, res) {
 
-    db.Events.findOne({ where: { title: { $like: '%' + req.params.title + '%' } } }).then((data) => {
-      res.json(data);
+    
+    let personObj = {};
+    let eventArr = [];
+    // First find user by cell
+    db.Users.findOne({
+      where: { 
+        title: {
+          [Op.like]: req.params.keyword
+        }
+      }
     })
+      .then(data => {
+        //defining personObj
+        personObj.first_name = data.first_name;
+        personObj.last_name = data.last_name;
+        personObj.cell = data.cell;
+        personObj.email = data.email;
+        personObj.role = data.role;
+        // makes a call to Keywords to find what keywords a person has used
+        db.Keywords.findAll({
+          where: {
+            cell: data.cell
+          }
+        })
+          .then(data2 => {
+            // maps over an array of answers (from above query)
+            let keyArray = data2.map(item => item.keyword)
+            // For each keyword mapped, this makes a query to find what event it is assocaited with
+            keyArray.forEach(keyWord => {
+              db.Events.findOne({
+                where: {
+                  keyword: keyWord
+                }
+              })
+                .then(data3 => {
+                  // pushes the result into an array of events
+                  eventArr.push(data3)
+                })
+            })
+            // this timeout allows time for the event array to be made
+            setTimeout(function () {
+              //renders the handlebars page 'people'
+              res.render("people", {
+                person: personObj,
+                event: eventArr
+              })
+            }, 500)
+
+          })
+      })
   });
 
 
@@ -315,14 +409,17 @@ module.exports = function (app) {
       if (data !== null) {
         db.Keywords.create({
 
-          keywordTwo: KW,
+          keyword: KW,
           cell: req.data.subscriber.mobile_number
         })
-
       }
       else {
         createUser();
+        db.Keywords.create({
 
+          keyword: KW,
+          cell: req.data.subscriber.mobile_number
+        })
       }
 
       res.json(data);

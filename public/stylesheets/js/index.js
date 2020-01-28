@@ -97,11 +97,12 @@ $(document).ready(function () {
 
     // creates Ajax get request
     function getEventKey(data) {
-      $.get("/api/events/keyword/" + data) 
-        .then(function (response) {
-          console.log(response);
-          // If there's an error, handle it by throwing up an alert
-        })
+      window.location.href = ("/api/events/keyword/" + data)
+      // $.get("/api/events/keyword/" + data) 
+      //   .then(function (response) {
+      //     console.log(response);
+      //     // If there's an error, handle it by throwing up an alert
+      //   })
     }
     // sends ajax request
     getEventKey(searchText);
@@ -136,11 +137,6 @@ $(document).ready(function () {
     // makes Ajax post request
     function getPersonName(name1, name2) {
       window.location.href = ("/api/users/name/" + name1 + "/" + name2)
-      // $.get("/api/users/name/" + name1 + "/" + name2)
-      //   .then(function (data) {
-      //     console.log(data);
-      //     // If there's an error, handle it by throwing up an alert
-      //   })
     }
     // sends ajax post request
     getPersonName(firstName, lastName);
