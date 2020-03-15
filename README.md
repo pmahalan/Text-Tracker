@@ -1,5 +1,8 @@
 # Text Tracker
 
+## Heroku Deployed Application
+https://protected-thicket-21207.herokuapp.com/
+
 ## Elevator Pitch
 
 "Text Tracker" is an application designed for allowing users to track event attendance. It utilizes clearstream.io, a communications service which maintains and updates information via a webhook. In Text Tracker, clearstream's webhook works in conjuction with a MySQL database, as well as front-end webpages, to provide a full-stack platform. 
